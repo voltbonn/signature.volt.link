@@ -19,7 +19,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: signature_volt_link
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -28,15 +30,10 @@ jobs:
         with:
           flutter-version: '2.5.3'
       - run: ls -lah
-        working-directory: signature_volt_link
       - run: flutter packages get
-        working-directory: signature_volt_link
       - run: flutter pub get
-        working-directory: signature_volt_link
       # - run: flutter test
-      #   working-directory: signature_volt_link
       - run: flutter build web
-        working-directory: signature_volt_link
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@3.1.0
         env:
