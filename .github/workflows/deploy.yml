@@ -27,11 +27,16 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.5.3'
-      - run: cd ./signature_volt_link/
+      - run: ls -lah
+        working-directory: signature_volt_link
       - run: flutter packages get
+        working-directory: signature_volt_link
       - run: flutter pub get
+        working-directory: signature_volt_link
       # - run: flutter test
+      #   working-directory: signature_volt_link
       - run: flutter build web
+        working-directory: signature_volt_link
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@3.1.0
         env:
