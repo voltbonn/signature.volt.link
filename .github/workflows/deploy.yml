@@ -28,6 +28,7 @@ jobs:
         with:
           flutter-version: '2.0.5'
       - run: cd ./signature_volt_link/
+      - run: flutter packages get
       - run: flutter pub get
       # - run: flutter test
       - run: flutter build web
