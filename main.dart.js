@@ -46314,14 +46314,14 @@ return M.a29(this.r,s.b.aq(0,r.gt(r)),C.ec)}}
 K.uW.prototype={
 M(a,b){return this.e.$2(b,this.f)}}
 F.xX.prototype={
-M(a,b){return new S.pt(C.BU,"Flutter Demo",X.a3P(null,C.mO),null)}}
+M(a,b){return new S.pt(C.BU,"Mail Signature Generator",X.a3P(null,C.mO),null)}}
 F.pG.prototype={
 aX(){return new F.tr(C.o)}}
 F.tr.prototype={
 Mn(){this.aW(new F.Vu(this))},
 M(a,b){var s,r=null
 this.a.toString
-s=L.a_E("Flutter Demo Home Page",r)
+s=L.a_E("Mail Signature Generator",r)
 return new M.qz(new E.o0(s,new E.Ey(r,r,1/0,56),r),T.It(T.aaV(H.a([C.Ha,L.a_E(""+this.d,K.bL(b).R.d)],t.p),C.mI),r,r),E.a2p(C.y7,!1,this.gMm(),"Increment"),r)}}
 F.Vu.prototype={
 $0(){++this.a.d},
