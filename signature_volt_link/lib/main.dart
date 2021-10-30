@@ -1,4 +1,8 @@
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import "dart:math" show pi;
 
 void main() {
   runApp(const MyApp());
@@ -7,39 +11,52 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mail Signature Generator',
+      title: 'Signatur Generator',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Mail Signature Generator'),
+          primaryColor: const Color.fromARGB(255, 88, 43, 131),
+          primarySwatch: const MaterialColor(
+            0x582b83, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
+            <int, Color>{
+              50: Color(0xff69408f), //10%
+              100: Color(0xff79559c), //20%
+              200: Color(0xff8a6ba8), //30%
+              300: Color(0xff9b80b5), //40%
+              400: Color(0xffac95c1), //50%
+              500: Color(0xffbcaacd), //60%
+              600: Color(0xffcdbfda), //70%
+              700: Color(0xffded5e6), //80%
+              800: Color(0xffeeeaf3), //90%
+              900: Color(0xffffffff), //100%
+            },
+          ),
+          textTheme: const TextTheme(
+            headline1: TextStyle(
+              color: Color.fromARGB(255, 88, 43, 131),
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+            headline2: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(
+                  const Color.fromARGB(255, 88, 43, 131)),
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            ),
+          )),
+      home: const MyHomePage(title: 'Signatur Generator'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -48,68 +65,200 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  late ConfettiController _controllerTopCenter;
+  var defaultHeightSizedBox = 15.0;
+  String pronomDropdownValue = 'One';
+  @override
+  void initState() {
+    super.initState();
+    _controllerTopCenter =
+        ConfettiController(duration: const Duration(milliseconds: 500));
+  }
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  @override
+  void dispose() {
+    _controllerTopCenter.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    var widthDesktopCardForm = MediaQuery.of(context).size.width * 0.45;
+    var heightDesktopCardPreview = MediaQuery.of(context).size.height * 0.85;
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: Container(
+        color: const Color.fromARGB(255, 20, 0, 34),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                color: Colors.white,
+                width: widthDesktopCardForm,
+                height: heightDesktopCardPreview,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Deine Daten.",
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      const Text(
+                          "Lorem ipsum whatever, text description must be longer"),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Enter your name',
+                          hintText: 'Test',
+                        ),
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Enter your mail',
+                        ),
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Enter your location',
+                        ),
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Enter your position',
+                        ),
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      Text(
+                        "Pronom question",
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      DropdownButton(
+                        isExpanded: true,
+                        value: pronomDropdownValue,
+                        icon: const Icon(Icons.arrow_drop_down),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: TextStyle(color: Theme.of(context).primaryColor),
+                        underline: Container(
+                          height: 2,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            pronomDropdownValue = newValue!;
+                          });
+                        },
+                        items: <String>['One', 'Two', 'Free', 'Four']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 25,
+              ),
+              Container(
+                color: Colors.white,
+                width: widthDesktopCardForm,
+                height: heightDesktopCardPreview,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: ConfettiWidget(
+                          confettiController: _controllerTopCenter,
+                          blastDirection: pi / 3,
+                          maxBlastForce: 5, // set a lower max blast force
+                          minBlastForce: 2, // set a lower min blast force
+                          emissionFrequency: 0.05,
+                          numberOfParticles: 50, // a lot of particles at once
+                          gravity: 0.5,
+                        ),
+                      ),
+                      Text(
+                        "Dein Ding.",
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      const Text(
+                          "Lorem ipsum whatever, text description must be longer"),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 2, color: Theme.of(context).primaryColor),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(10),
+                          child: HtmlWidget(
+                            '''
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <!-- anything goes here -->
+  ''',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: defaultHeightSizedBox,
+                      ),
+                      Container(
+                        height: 40,
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            _controllerTopCenter.play();
+                          },
+                          icon: const Icon(Icons.copy),
+                          label: const Text('Gmail'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
