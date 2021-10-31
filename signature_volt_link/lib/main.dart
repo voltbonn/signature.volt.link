@@ -49,6 +49,14 @@ class MyApp extends StatelessWidget {
               color: Colors.black,
               fontSize: 25,
             ),
+            bodyText1: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+            ),
+            bodyText2: TextStyle(
+              color: Colors.white,
+              fontSize: 15,
+            ),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
@@ -91,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var widthDesktopCardForm = MediaQuery.of(context).size.width * 0.45;
-    var heightDesktopCardPreview = MediaQuery.of(context).size.height * 0.75;
+    var heightDesktopCardPreview = MediaQuery.of(context).size.height * 0.70;
     return Scaffold(
       body: Container(
         color: const Color.fromARGB(255, 20, 0, 34),
@@ -116,10 +124,44 @@ class _MyHomePageState extends State<MyHomePage> {
                   previewView(widthDesktopCardForm, heightDesktopCardPreview),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Impressum",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    footerDivider(),
+                    Text(
+                      "Datenschutz",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    footerDivider(),
+                    Text(
+                      "Quellcode",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    footerDivider(),
+                    Text(
+                      "Kontakt",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget footerDivider() {
+    return Text(
+      "  •  ",
+      style: Theme.of(context).textTheme.bodyText2,
     );
   }
 
