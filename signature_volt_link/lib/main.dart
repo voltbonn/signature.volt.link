@@ -37,11 +37,11 @@ class MyApp extends StatelessWidget {
             headline1: TextStyle(
               color: Color.fromARGB(255, 88, 43, 131),
               fontWeight: FontWeight.bold,
-              fontSize: 30,
+              fontSize: 37,
             ),
             headline2: TextStyle(
               color: Colors.black,
-              fontSize: 20,
+              fontSize: 25,
             ),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
