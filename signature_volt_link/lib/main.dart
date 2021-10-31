@@ -242,9 +242,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.all(10),
                 child: HtmlWidget(
                   '''
-  <h1>Heading 1</h1>
-  <h2>Heading 2</h2>
-  <h3>Heading 3</h3>
+  <b>Jean Placeholder</b><br>
+  <b>DE Placholder</b>
+  <p>Volt Euroopa / Volt Deutschland</p>
+  <a href="mailto:jean.placeholder@volteuropa.org">jean.placeholder@volteuropa.org</a>
   <!-- anything goes here -->
   ''',
                 ),
