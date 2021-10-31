@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import "dart:math" show pi;
 
+import 'package:url_launcher/url_launcher.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -50,11 +52,11 @@ class MyApp extends StatelessWidget {
               fontSize: 25,
             ),
             bodyText1: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
+              color: Colors.white,
+              fontSize: 20,
             ),
             bodyText2: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 15,
             ),
           ),
@@ -129,25 +131,40 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Impressum",
-                      style: Theme.of(context).textTheme.bodyText2,
+                    TextButton(
+                      child: Text(
+                        "Impressum",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      onPressed: () => launchURL(
+                          "https://www.voltdeutschland.org/impressum"),
                     ),
                     footerDivider(),
-                    Text(
-                      "Datenschutz",
-                      style: Theme.of(context).textTheme.bodyText2,
+                    TextButton(
+                      child: Text(
+                        "Datenschutz",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      onPressed: () => launchURL(
+                          "https://www.voltdeutschland.org/datenschutz"),
                     ),
                     footerDivider(),
-                    Text(
-                      "Quellcode",
-                      style: Theme.of(context).textTheme.bodyText2,
+                    TextButton(
+                      child: Text(
+                        "Quellcode",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      onPressed: () => launchURL(
+                          "https://github.com/voltbonn/signature.volt.link"),
                     ),
                     footerDivider(),
-                    Text(
-                      "Kontakt",
-                      style: Theme.of(context).textTheme.bodyText2,
-                    )
+                    TextButton(
+                      child: Text(
+                        "Kontakt",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      onPressed: () => launchURL("mailto:"), // TODO: Add mail
+                    ),
                   ],
                 ),
               ),
@@ -158,10 +175,13 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void launchURL(url) async =>
+      await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+
   Widget footerDivider() {
     return Text(
       "  •  ",
-      style: Theme.of(context).textTheme.bodyText2,
+      style: Theme.of(context).textTheme.bodyText1,
     );
   }
 
