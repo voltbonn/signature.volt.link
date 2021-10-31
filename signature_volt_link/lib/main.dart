@@ -92,171 +92,177 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                color: Colors.white,
-                width: widthDesktopCardForm,
-                height: heightDesktopCardPreview,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Deine Daten.",
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      const Text(
-                          "Lorem ipsum whatever, text description must be longer"),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Enter your name',
-                          hintText: 'Test',
-                        ),
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Enter your mail',
-                        ),
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Enter your location',
-                        ),
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Enter your position',
-                        ),
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      Text(
-                        "Pronom question",
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      DropdownButton(
-                        isExpanded: true,
-                        value: pronomDropdownValue,
-                        icon: const Icon(Icons.arrow_drop_down),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: TextStyle(color: Theme.of(context).primaryColor),
-                        underline: Container(
-                          height: 2,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            pronomDropdownValue = newValue!;
-                          });
-                        },
-                        items: <String>['One', 'Two', 'Free', 'Four']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              formView(widthDesktopCardForm, heightDesktopCardPreview),
               const SizedBox(
                 width: 25,
               ),
-              Container(
-                color: Colors.white,
-                width: widthDesktopCardForm,
-                height: heightDesktopCardPreview,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: ConfettiWidget(
-                          confettiController: _controllerTopCenter,
-                          blastDirection: pi / 3,
-                          maxBlastForce: 5, // set a lower max blast force
-                          minBlastForce: 2, // set a lower min blast force
-                          emissionFrequency: 0.05,
-                          numberOfParticles: 50, // a lot of particles at once
-                          gravity: 0.5,
-                        ),
-                      ),
-                      Text(
-                        "Dein Ding.",
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      const Text(
-                          "Lorem ipsum whatever, text description must be longer"),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 2, color: Theme.of(context).primaryColor),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(10),
-                          child: HtmlWidget(
-                            '''
+              previewView(widthDesktopCardForm, heightDesktopCardPreview),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget formView(widthDesktopCardForm, heightDesktopCardPreview) {
+    return Container(
+      color: Colors.white,
+      width: widthDesktopCardForm,
+      height: heightDesktopCardPreview,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Deine Daten.",
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            const Text("Lorem ipsum whatever, text description must be longer"),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            const TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter your name',
+                hintText: 'Test',
+              ),
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            const TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter your mail',
+              ),
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            const TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter your location',
+              ),
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            const TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter your position',
+              ),
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            Text(
+              "Pronom question",
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            DropdownButton(
+              isExpanded: true,
+              value: pronomDropdownValue,
+              icon: const Icon(Icons.arrow_drop_down),
+              iconSize: 24,
+              elevation: 16,
+              style: TextStyle(color: Theme.of(context).primaryColor),
+              underline: Container(
+                height: 2,
+                color: Theme.of(context).primaryColor,
+              ),
+              onChanged: (String? newValue) {
+                setState(() {
+                  pronomDropdownValue = newValue!;
+                });
+              },
+              items: <String>['One', 'Two', 'Free', 'Four']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget previewView(widthDesktopCardForm, heightDesktopCardPreview) {
+    return Container(
+      color: Colors.white,
+      width: widthDesktopCardForm,
+      height: heightDesktopCardPreview,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: ConfettiWidget(
+                confettiController: _controllerTopCenter,
+                blastDirection: pi / 3,
+                maxBlastForce: 5, // set a lower max blast force
+                minBlastForce: 2, // set a lower min blast force
+                emissionFrequency: 0.05,
+                numberOfParticles: 50, // a lot of particles at once
+                gravity: 0.5,
+              ),
+            ),
+            Text(
+              "Dein Ding.",
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            const Text("Lorem ipsum whatever, text description must be longer"),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border:
+                    Border.all(width: 2, color: Theme.of(context).primaryColor),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(10),
+                child: HtmlWidget(
+                  '''
   <h1>Heading 1</h1>
   <h2>Heading 2</h2>
   <h3>Heading 3</h3>
   <!-- anything goes here -->
   ''',
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: defaultHeightSizedBox,
-                      ),
-                      Container(
-                        height: 40,
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            _controllerTopCenter.play();
-                          },
-                          icon: const Icon(Icons.copy),
-                          label: const Text('Gmail'),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: defaultHeightSizedBox,
+            ),
+            Container(
+              height: 40,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  _controllerTopCenter.play();
+                },
+                icon: const Icon(Icons.copy),
+                label: const Text('Gmail'),
+              ),
+            ),
+          ],
         ),
       ),
     );
