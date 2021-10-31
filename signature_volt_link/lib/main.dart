@@ -1,6 +1,7 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import "dart:math" show pi;
 
@@ -35,11 +36,16 @@ class MyApp extends StatelessWidget {
           ),
           textTheme: const TextTheme(
             headline1: TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255),
+              fontWeight: FontWeight.bold,
+              fontSize: 45,
+            ),
+            headline2: TextStyle(
               color: Color.fromARGB(255, 88, 43, 131),
               fontWeight: FontWeight.bold,
               fontSize: 37,
             ),
-            headline2: TextStyle(
+            headline3: TextStyle(
               color: Colors.black,
               fontSize: 25,
             ),
@@ -85,19 +91,31 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var widthDesktopCardForm = MediaQuery.of(context).size.width * 0.45;
-    var heightDesktopCardPreview = MediaQuery.of(context).size.height * 0.85;
+    var heightDesktopCardPreview = MediaQuery.of(context).size.height * 0.75;
     return Scaffold(
       body: Container(
         color: const Color.fromARGB(255, 20, 0, 34),
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              formView(widthDesktopCardForm, heightDesktopCardPreview),
-              const SizedBox(
-                width: 25,
+          child: Column(
+            children: [
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: SvgPicture.asset('images/volt_logo_purple.svg')),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: Text("Mail Signature Generator",
+                    style: Theme.of(context).textTheme.headline1),
               ),
-              previewView(widthDesktopCardForm, heightDesktopCardPreview),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  formView(widthDesktopCardForm, heightDesktopCardPreview),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  previewView(widthDesktopCardForm, heightDesktopCardPreview),
+                ],
+              ),
             ],
           ),
         ),
@@ -117,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Text(
               "Deine Daten.",
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headline2,
             ),
             SizedBox(
               height: defaultHeightSizedBox,
@@ -165,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               "Pronom question",
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.headline3,
             ),
             SizedBox(
               height: defaultHeightSizedBox,
@@ -224,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               "Dein Ding.",
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.headline2,
             ),
             SizedBox(
               height: defaultHeightSizedBox,
