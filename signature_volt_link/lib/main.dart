@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Signatur Generator',
       theme: ThemeData(
+          fontFamily: 'Ubuntu',
           primaryColor: const Color.fromARGB(255, 88, 43, 131),
           primarySwatch: const MaterialColor(
             0x582b83, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
