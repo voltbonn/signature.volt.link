@@ -313,23 +313,90 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: defaultHeightSizedBox,
             ),
-            Container(
-              decoration: BoxDecoration(
-                border:
-                    Border.all(width: 2, color: Theme.of(context).primaryColor),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(10),
-                child: HtmlWidget(
-                  '''
+            Column(
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 51, 71, 91),
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(10.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(10.0),
+                        bottomLeft: Radius.circular(0.0)),
+                  ),
+                  height: 30,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 10,
+                        width: 10,
+                        margin: const EdgeInsets.all(100.0),
+                        decoration: const BoxDecoration(
+                            color: Colors.red, shape: BoxShape.circle),
+                      ),
+                      Container(
+                        height: 10,
+                        width: 10,
+                        margin: const EdgeInsets.all(100.0),
+                        decoration: const BoxDecoration(
+                            color: Colors.yellow, shape: BoxShape.circle),
+                      ),
+                      Container(
+                        height: 10,
+                        width: 10,
+                        margin: const EdgeInsets.all(100.0),
+                        decoration: const BoxDecoration(
+                            color: Colors.green, shape: BoxShape.circle),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  color: const Color.fromARGB(255, 71, 91, 108),
+                  height: 2,
+                ),
+                Container(
+                  color: const Color.fromARGB(255, 51, 71, 91),
+                  height: 60,
+                  width: widthDesktopCardForm * 0.95,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text("An: volt@volteuropa.org"),
+                        Text("Betreff: Meine neue Volt Signatur"),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(0.0),
+                          bottomRight: Radius.circular(10.0),
+                          topLeft: Radius.circular(0.0),
+                          bottomLeft: Radius.circular(10.0)),
+                      border: Border.all(
+                          width: 1.0,
+                          color: const Color.fromARGB(255, 51, 71, 91))),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: HtmlWidget(
+                      '''
   <b>Jean Placeholder</b><br>
   <b>DE Placholder</b>
   <p>Volt Euroopa / Volt Deutschland</p>
   <a href="mailto:jean.placeholder@volteuropa.org">jean.placeholder@volteuropa.org</a>
   <!-- anything goes here -->
   ''',
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
             SizedBox(
               height: defaultHeightSizedBox,
