@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import "dart:math" show pi;
+import "dart:math" show cos, pi, sin;
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -108,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var widthDesktopCardPreview = MediaQuery.of(context).size.width * 0.50;
     var heightDesktopCardPreview = MediaQuery.of(context).size.height * 0.70;
+
     return Scaffold(
       body: Container(
         color: const Color.fromARGB(255, 20, 0, 34),
@@ -342,6 +343,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget previewView(widthDesktopCardForm, heightDesktopCardPreview) {
+    Path drawStar(Size size) {
+      // Method to convert degree to radians
+      double degToRad(double deg) => deg * (pi / 180.0);
+
+      const numberOfPoints = 5;
+      final halfWidth = size.width / 2;
+      final externalRadius = halfWidth;
+      final internalRadius = halfWidth / 2.5;
+      final degreesPerStep = degToRad(360 / numberOfPoints);
+      final halfDegreesPerStep = degreesPerStep / 2;
+      final path = Path();
+      final fullAngle = degToRad(360);
+      path.moveTo(size.width, halfWidth);
+
+      for (double step = 0; step < fullAngle; step += degreesPerStep) {
+        path.lineTo(halfWidth + externalRadius * cos(step),
+            halfWidth + externalRadius * sin(step));
+        path.lineTo(halfWidth + internalRadius * cos(step + halfDegreesPerStep),
+            halfWidth + internalRadius * sin(step + halfDegreesPerStep));
+      }
+      path.close();
+      return path;
+    }
+
     return Container(
       width: widthDesktopCardForm,
       height: heightDesktopCardPreview,
@@ -355,11 +380,18 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ConfettiWidget(
                 confettiController: _controllerTopCenter,
                 blastDirection: pi / 3,
-                maxBlastForce: 5, // set a lower max blast force
-                minBlastForce: 2, // set a lower min blast force
+                maxBlastForce: 2, // set a lower max blast force
+                minBlastForce: 1, // set a lower min blast force
                 emissionFrequency: 0.05,
                 numberOfParticles: 50, // a lot of particles at once
                 gravity: 0.3,
+                colors: const [
+                  VoltColors.blue,
+                  VoltColors.green,
+                  VoltColors.red,
+                  VoltColors.yellow
+                ],
+                createParticlePath: drawStar,
               ),
             ),
             Container(
@@ -403,7 +435,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 10.0,
                         height: 10.0,
                         decoration: const BoxDecoration(
-                          color: Colors.red,
+                          color: VoltColors.red,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -412,7 +444,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 10.0,
                         height: 10.0,
                         decoration: const BoxDecoration(
-                          color: Colors.yellow,
+                          color: VoltColors.yellow,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -421,7 +453,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 10.0,
                         height: 10.0,
                         decoration: const BoxDecoration(
-                          color: Colors.green,
+                          color: VoltColors.green,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -490,4 +522,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+class VoltColors {
+  static const Color yellow = Color.fromARGB(255, 253, 194, 32);
+  static const Color green = Color.fromARGB(255, 27, 190, 111);
+  static const Color blue = Color.fromARGB(255, 130, 208, 244);
+  static const Color red = Color.fromARGB(255, 230, 62, 18);
 }
