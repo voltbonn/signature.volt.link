@@ -3,24 +3,24 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "version.json": "8663c355fc6b199a87e2b8cfd8daad39",
-"favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
-"assets/NOTICES": "de7624b9e2b897cae7fb2361a6f68391",
-"assets/assets/images/volt_logo_purple.svg": "8fd76992f814ef2f7e6befaa63fbcf5e",
-"assets/assets/fonts/Ubuntu-Regular.ttf": "2505bfbd9bde14a7829cc8c242a0d25c",
-"assets/FontManifest.json": "f261ccac070a5d9bd27892861d668aa8",
-"assets/AssetManifest.json": "4f9dbf7a78ea8ff0ce2f175ebe68f515",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/packages/flutter_widget_from_html_core/test/images/logo.png": "57838d52c318faff743130c3fcfae0c6",
-"icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
-"icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
+  "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"main.dart.js": "a1a548723d298477917727ca0d13dbee",
+"icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
+"favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"index.html": "3865b0eb7e6ea9972ef599f9c13d0f33",
+"/": "3865b0eb7e6ea9972ef599f9c13d0f33",
 "manifest.json": "12718f6a94e95b8a16565ddea4e607a3",
-"index.html": "33446e87d2a58e32bf0260b47d470164",
-"/": "33446e87d2a58e32bf0260b47d470164"
+"version.json": "8663c355fc6b199a87e2b8cfd8daad39",
+"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
+"assets/NOTICES": "de7624b9e2b897cae7fb2361a6f68391",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
+"assets/packages/flutter_widget_from_html_core/test/images/logo.png": "57838d52c318faff743130c3fcfae0c6",
+"assets/FontManifest.json": "f261ccac070a5d9bd27892861d668aa8",
+"assets/assets/fonts/Ubuntu-Regular.ttf": "2505bfbd9bde14a7829cc8c242a0d25c",
+"assets/assets/images/volt_logo_purple.svg": "8fd76992f814ef2f7e6befaa63fbcf5e",
+"assets/AssetManifest.json": "4f9dbf7a78ea8ff0ce2f175ebe68f515",
+"main.dart.js": "6b3e053c3a3ef43825e5249dbc629138"
 };
 
 // The application shell files that are downloaded before a service worker can
