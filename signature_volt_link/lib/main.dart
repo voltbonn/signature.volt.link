@@ -467,7 +467,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   color: const Color.fromARGB(255, 51, 71, 91),
                   height: 60,
-                  width: widthDesktopCardForm * 0.95,
+                  width: widthDesktopCardForm,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Column(
