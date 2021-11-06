@@ -4,18 +4,43 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import 'package:provider/src/provider.dart';
 import 'package:signature_volt_link/config/volt_color.dart';
 import 'package:signature_volt_link/signature/cubit/signature_cubit.dart';
 
 class SignaturePreview extends StatelessWidget {
-  const SignaturePreview({Key? key}) : super(key: key);
+  final ConfettiController confettiController;
+  const SignaturePreview({Key? key, required this.confettiController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var widthDesktopPreview = MediaQuery.of(context).size.width * 0.50;
     var heightDesktopPreview = MediaQuery.of(context).size.height * 0.70;
     var defaultHeightSizedBox = 15.0;
+
+    Path drawStar(Size size) {
+      // Method to convert degree to radians
+      double degToRad(double deg) => deg * (pi / 180.0);
+
+      const numberOfPoints = 5;
+      final halfWidth = size.width / 2;
+      final externalRadius = halfWidth;
+      final internalRadius = halfWidth / 2.5;
+      final degreesPerStep = degToRad(360 / numberOfPoints);
+      final halfDegreesPerStep = degreesPerStep / 2;
+      final path = Path();
+      final fullAngle = degToRad(360);
+      path.moveTo(size.width, halfWidth);
+
+      for (double step = 0; step < fullAngle; step += degreesPerStep) {
+        path.lineTo(halfWidth + externalRadius * cos(step),
+            halfWidth + externalRadius * sin(step));
+        path.lineTo(halfWidth + internalRadius * cos(step + halfDegreesPerStep),
+            halfWidth + internalRadius * sin(step + halfDegreesPerStep));
+      }
+      path.close();
+      return path;
+    }
 
     return Container(
       width: widthDesktopPreview,
@@ -25,26 +50,25 @@ class SignaturePreview extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Align(
-            //   alignment: Alignment.topCenter,
-            //   child: ConfettiWidget(
-            //     confettiController: _controllerTopCenter,
-            //     blastDirection: pi / 3,
-            //     maxBlastForce: 2, // set a lower max blast force
-            //     minBlastForce: 1, // set a lower min blast force
-            //     emissionFrequency: 0.05,
-            //     numberOfParticles: 50, // a lot of particles at once
-            //     gravity: 0.3,
-            //     colors: const [
-            //       VoltColor.blue,
-            //       VoltColor.green,
-            //       VoltColor.red,
-            //       VoltColor.yellow
-            //     ],
-            //     createParticlePath:
-            //         context.select((SignatureCubit cubit) => cubit.drawStar),
-            //   ),
-            // ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: ConfettiWidget(
+                confettiController: confettiController,
+                blastDirection: pi / 3,
+                maxBlastForce: 2, // set a lower max blast force
+                minBlastForce: 1, // set a lower min blast force
+                emissionFrequency: 0.05,
+                numberOfParticles: 50, // a lot of particles at once
+                gravity: 0.3,
+                colors: const [
+                  VoltColor.blue,
+                  VoltColor.green,
+                  VoltColor.red,
+                  VoltColor.yellow
+                ],
+                createParticlePath: drawStar,
+              ),
+            ),
             Container(
               color: Colors.white,
               child: Padding(
@@ -163,7 +187,7 @@ class SignaturePreview extends StatelessWidget {
               height: 40,
               child: ElevatedButton(
                 onPressed: () {
-                  //_controllerTopCenter.play();
+                  confettiController.play();
                 },
                 child: const Text('Gmail'),
               ),

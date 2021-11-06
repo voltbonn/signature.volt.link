@@ -47,10 +47,13 @@ class SignatureView extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   SignatureForm(),
                   SizedBox(width: 25),
-                  SignaturePreview(),
+                  SignaturePreview(
+                    confettiController:
+                        context.read<SignatureCubit>().confettiController,
+                  ),
                 ],
               ),
               Padding(

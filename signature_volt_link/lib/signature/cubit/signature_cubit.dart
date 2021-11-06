@@ -8,11 +8,15 @@
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:confetti/confetti.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SignatureCubit extends Cubit<int> {
   SignatureCubit() : super(0);
+
+  var confettiController =
+      ConfettiController(duration: const Duration(milliseconds: 500));
 
   void launchURL(url) async =>
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
