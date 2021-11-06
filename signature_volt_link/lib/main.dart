@@ -359,7 +359,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 minBlastForce: 2, // set a lower min blast force
                 emissionFrequency: 0.05,
                 numberOfParticles: 50, // a lot of particles at once
-                gravity: 0.5,
+                gravity: 0.3,
               ),
             ),
             Container(
