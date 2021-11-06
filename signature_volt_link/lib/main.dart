@@ -388,28 +388,34 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 30,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      const SizedBox(width: 10),
                       Container(
-                        height: 10,
-                        width: 10,
-                        margin: const EdgeInsets.all(100.0),
+                        width: 10.0,
+                        height: 10.0,
                         decoration: const BoxDecoration(
-                            color: Colors.red, shape: BoxShape.circle),
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
                       ),
+                      const SizedBox(width: 5),
                       Container(
-                        height: 10,
-                        width: 10,
-                        margin: const EdgeInsets.all(100.0),
+                        width: 10.0,
+                        height: 10.0,
                         decoration: const BoxDecoration(
-                            color: Colors.yellow, shape: BoxShape.circle),
+                          color: Colors.yellow,
+                          shape: BoxShape.circle,
+                        ),
                       ),
+                      const SizedBox(width: 5),
                       Container(
-                        height: 10,
-                        width: 10,
-                        margin: const EdgeInsets.all(100.0),
+                        width: 10.0,
+                        height: 10.0,
                         decoration: const BoxDecoration(
-                            color: Colors.green, shape: BoxShape.circle),
+                          color: Colors.green,
+                          shape: BoxShape.circle,
+                        ),
                       ),
                     ],
                   ),
