@@ -8,8 +8,8 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "3865b0eb7e6ea9972ef599f9c13d0f33",
-"/": "3865b0eb7e6ea9972ef599f9c13d0f33",
+"index.html": "ad2983c81c8f6a7c672b0247f5de9241",
+"/": "ad2983c81c8f6a7c672b0247f5de9241",
 "manifest.json": "12718f6a94e95b8a16565ddea4e607a3",
 "version.json": "8663c355fc6b199a87e2b8cfd8daad39",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
@@ -20,7 +20,7 @@ const RESOURCES = {
 "assets/assets/fonts/Ubuntu-Regular.ttf": "2505bfbd9bde14a7829cc8c242a0d25c",
 "assets/assets/images/volt_logo_purple.svg": "8fd76992f814ef2f7e6befaa63fbcf5e",
 "assets/AssetManifest.json": "4f9dbf7a78ea8ff0ce2f175ebe68f515",
-"main.dart.js": "6b3e053c3a3ef43825e5249dbc629138"
+"main.dart.js": "37cf9d886ac481e2b216f45d4197c657"
 };
 
 // The application shell files that are downloaded before a service worker can
