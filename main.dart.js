@@ -76132,7 +76132,7 @@ return M.cm(j,new T.cJ(C.du,T.wE(H.a([i,new T.bU(j,15,j,j),C.X0,new T.bU(j,15,j,
 akM(a,b){var s,r=null,q=this.gAn(),p=this.c
 p.toString
 s=t.p
-return M.cm(r,new T.cJ(C.du,T.wE(H.a([new T.k0(C.kz,r,r,new Z.wH(q,2,1,1.0471975511965976,new F.agR(),0.3,0.05,50,C.JM,r),r),M.cm(r,new T.cJ(C.lX,L.f4("Dein Ding.",r,r,r,K.aE(p).a3.b,r,r),r),C.l,r,r,r,r,r,r),new T.bU(r,15,r,r),C.X4,new T.bU(r,15,r,r),T.wE(H.a([M.cm(r,T.Lx(H.a([C.Tn,M.cm(r,r,r,r,C.zK,10,r,r,10),C.yf,M.cm(r,r,r,r,C.zN,10,r,r,10),C.yf,M.cm(r,r,r,r,C.zP,10,r,r,10)],s),C.bD,C.bL,C.bt),r,r,C.zM,30,r,r,r),M.cm(r,r,C.DJ,r,r,2,r,r,r),M.cm(r,new T.cJ(C.GJ,T.wE(C.IO,C.c_,C.fy,C.bt,r),r),C.hW,r,r,60,r,r,a*0.95),M.cm(r,C.Qs,r,r,new S.dg(r,r,F.aDf(C.hW,1),C.zy,r,r,r,C.a5),r,r,r,r)],s),C.bD,C.bL,C.bt,r),new T.bU(r,15,r,r),M.cm(r,new D.H3(new F.agQ(this),r,r,C.T,r,!1,C.X_,r),r,r,r,40,r,r,r)],s),C.c_,C.bL,C.bt,r),r),r,r,r,b,r,r,a)}}
+return M.cm(r,new T.cJ(C.du,T.wE(H.a([new T.k0(C.kz,r,r,new Z.wH(q,2,1,1.0471975511965976,new F.agR(),0.3,0.05,50,C.JM,r),r),M.cm(r,new T.cJ(C.lX,L.f4("Dein Ding.",r,r,r,K.aE(p).a3.b,r,r),r),C.l,r,r,r,r,r,r),new T.bU(r,15,r,r),C.X4,new T.bU(r,15,r,r),T.wE(H.a([M.cm(r,T.Lx(H.a([C.Tn,M.cm(r,r,r,r,C.zK,10,r,r,10),C.yf,M.cm(r,r,r,r,C.zN,10,r,r,10),C.yf,M.cm(r,r,r,r,C.zP,10,r,r,10)],s),C.bD,C.bL,C.bt),r,r,C.zM,30,r,r,r),M.cm(r,r,C.DJ,r,r,2,r,r,r),M.cm(r,new T.cJ(C.GJ,T.wE(C.IO,C.c_,C.fy,C.bt,r),r),C.hW,r,r,60,r,r,a),M.cm(r,C.Qs,r,r,new S.dg(r,r,F.aDf(C.hW,1),C.zy,r,r,r,C.a5),r,r,r,r)],s),C.bD,C.bL,C.bt,r),new T.bU(r,15,r,r),M.cm(r,new D.H3(new F.agQ(this),r,r,C.T,r,!1,C.X_,r),r,r,r,40,r,r,r)],s),C.c_,C.bL,C.bt,r),r),r,r,r,b,r,r,a)}}
 F.agJ.prototype={
 $0(){return this.a.m_("https://www.voltdeutschland.org/impressum")},
 $S:0}
