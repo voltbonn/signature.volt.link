@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "signatureAppBarTitle": "Mail Signature Generator",
+    "@signatureAppBarTitle": {
+        "description": "Text shown in the AppBar of the Signature Page"
+    }
+}
