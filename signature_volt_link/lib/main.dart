@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
               900: Color(0xffffffff), //100%
             },
           ),
-          buttonTheme: const ButtonThemeData(height: 50),
           textTheme: const TextTheme(
             headline1: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
@@ -63,10 +62,13 @@ class MyApp extends StatelessWidget {
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(
-                  const Color.fromARGB(255, 88, 43, 131)),
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            ),
+                foregroundColor: MaterialStateProperty.all<Color>(
+                    const Color.fromARGB(255, 88, 43, 131)),
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                shape: MaterialStateProperty.all<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(0.0),
+                ))),
           )),
       home: const MyHomePage(title: 'Signatur Generator'),
     );
