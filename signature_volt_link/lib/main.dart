@@ -227,7 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: defaultHeightSizedBox,
             ),
             const Text(
-              "Enter your mail:",
+              "Enter your name:",
             ),
             const SizedBox(height: 2),
             Container(
@@ -256,7 +256,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'jean.placeholder@volteurope.eu',
+                    hintText: 'jean.placeholder@volteurope.org',
                   ),
                 ),
               ),
