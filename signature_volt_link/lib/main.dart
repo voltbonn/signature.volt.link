@@ -210,9 +210,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Container(
               color: Colors.white,
-              child: Text(
-                "Deine Daten.",
-                style: Theme.of(context).textTheme.headline2,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                child: Text(
+                  "Deine Daten.",
+                  style: Theme.of(context).textTheme.headline2,
+                ),
               ),
             ),
             SizedBox(
@@ -361,9 +364,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               color: Colors.white,
-              child: Text(
-                "Dein Ding.",
-                style: Theme.of(context).textTheme.headline2,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                child: Text(
+                  "Dein Ding.",
+                  style: Theme.of(context).textTheme.headline2,
+                ),
               ),
             ),
             SizedBox(
