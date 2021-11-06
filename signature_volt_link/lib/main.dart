@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
               900: Color(0xffffffff), //100%
             },
           ),
+          buttonTheme: const ButtonThemeData(height: 50),
           textTheme: const TextTheme(
             headline1: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
               fontSize: 37,
             ),
             headline3: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 25,
             ),
             bodyText1: TextStyle(
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
               fontSize: 20,
             ),
             bodyText2: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 15,
             ),
           ),
@@ -84,7 +85,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late ConfettiController _controllerTopCenter;
   var defaultHeightSizedBox = 15.0;
-  String pronomDropdownValue = 'One';
+  String pronomDropdownValue = 'Sie';
   @override
   void initState() {
     super.initState();
@@ -100,7 +101,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var widthDesktopCardForm = MediaQuery.of(context).size.width * 0.45;
+    var widthDesktopCardForm = MediaQuery.of(context).size.width * 0.40;
+    var heightDesktopCardForm = MediaQuery.of(context).size.height * 0.70;
+
+    var widthDesktopCardPreview = MediaQuery.of(context).size.width * 0.50;
     var heightDesktopCardPreview = MediaQuery.of(context).size.height * 0.70;
     return Scaffold(
       body: Container(
@@ -119,11 +123,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  formView(widthDesktopCardForm, heightDesktopCardPreview),
+                  formView(widthDesktopCardForm, heightDesktopCardForm),
                   const SizedBox(
                     width: 25,
                   ),
-                  previewView(widthDesktopCardForm, heightDesktopCardPreview),
+                  previewView(
+                      widthDesktopCardPreview, heightDesktopCardPreview),
                 ],
               ),
               Padding(
@@ -187,17 +192,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget formView(widthDesktopCardForm, heightDesktopCardPreview) {
     return Container(
-      color: Colors.white,
       width: widthDesktopCardForm,
       height: heightDesktopCardPreview,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10.0),
+            bottomRight: Radius.circular(0.0),
+            topLeft: Radius.circular(10.0),
+            bottomLeft: Radius.circular(0.0)),
+      ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Deine Daten.",
-              style: Theme.of(context).textTheme.headline2,
+            Container(
+              color: Colors.white,
+              child: Text(
+                "Deine Daten.",
+                style: Theme.of(context).textTheme.headline2,
+              ),
             ),
             SizedBox(
               height: defaultHeightSizedBox,
@@ -206,73 +220,115 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: defaultHeightSizedBox,
             ),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your name',
-                hintText: 'Test',
+            const Text(
+              "Enter your mail:",
+            ),
+            const SizedBox(height: 2),
+            Container(
+              color: Colors.white,
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Jean Placeholder',
+                  ),
+                ),
               ),
             ),
             SizedBox(
               height: defaultHeightSizedBox,
             ),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your mail',
+            const Text(
+              "Enter your mail:",
+            ),
+            const SizedBox(height: 2),
+            Container(
+              color: Colors.white,
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'jean.placeholder@volteurope.eu',
+                  ),
+                ),
               ),
             ),
             SizedBox(
               height: defaultHeightSizedBox,
             ),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your location',
+            const Text(
+              "Enter your location:",
+            ),
+            const SizedBox(height: 2),
+            Container(
+              color: Colors.white,
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Germany',
+                  ),
+                ),
               ),
             ),
             SizedBox(
               height: defaultHeightSizedBox,
             ),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your position',
+            const Text(
+              "Enter your position:",
+            ),
+            const SizedBox(height: 2),
+            Container(
+              color: Colors.white,
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Lead Placeholder',
+                  ),
+                ),
               ),
             ),
             SizedBox(
               height: defaultHeightSizedBox,
             ),
-            Text(
-              "Pronom question",
-              style: Theme.of(context).textTheme.headline3,
+            const Text(
+              "(Optional) Wähle aus wie Du angesprochen werden möchtest:",
             ),
-            SizedBox(
-              height: defaultHeightSizedBox,
-            ),
-            DropdownButton(
-              isExpanded: true,
-              value: pronomDropdownValue,
-              icon: const Icon(Icons.arrow_drop_down),
-              iconSize: 24,
-              elevation: 16,
-              style: TextStyle(color: Theme.of(context).primaryColor),
-              underline: Container(
-                height: 2,
-                color: Theme.of(context).primaryColor,
+            const SizedBox(height: 2),
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                child: DropdownButton(
+                  isExpanded: true,
+                  value: pronomDropdownValue,
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: TextStyle(color: Theme.of(context).primaryColor),
+                  underline: Container(
+                    height: 0,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      pronomDropdownValue = newValue!;
+                    });
+                  },
+                  items: <String>['Sie', 'Er']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ),
-              onChanged: (String? newValue) {
-                setState(() {
-                  pronomDropdownValue = newValue!;
-                });
-              },
-              items: <String>['One', 'Two', 'Free', 'Four']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
             ),
           ],
         ),
@@ -282,7 +338,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget previewView(widthDesktopCardForm, heightDesktopCardPreview) {
     return Container(
-      color: Colors.white,
       width: widthDesktopCardForm,
       height: heightDesktopCardPreview,
       child: Padding(
@@ -302,14 +357,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 gravity: 0.5,
               ),
             ),
-            Text(
-              "Dein Ding.",
-              style: Theme.of(context).textTheme.headline2,
+            Container(
+              color: Colors.white,
+              child: Text(
+                "Dein Ding.",
+                style: Theme.of(context).textTheme.headline2,
+              ),
             ),
             SizedBox(
               height: defaultHeightSizedBox,
             ),
-            const Text("Lorem ipsum whatever, text description must be longer"),
+            const Text(
+              "Lorem ipsum whatever, text description must be longer",
+              style: TextStyle(color: Colors.white),
+            ),
             SizedBox(
               height: defaultHeightSizedBox,
             ),
@@ -403,12 +464,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               height: 40,
-              child: ElevatedButton.icon(
+              child: ElevatedButton(
                 onPressed: () {
                   _controllerTopCenter.play();
                 },
-                icon: const Icon(Icons.copy),
-                label: const Text('Gmail'),
+                child: const Text('Gmail'),
               ),
             ),
           ],
