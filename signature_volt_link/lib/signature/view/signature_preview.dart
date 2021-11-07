@@ -192,7 +192,7 @@ class SignaturePreview extends StatelessWidget {
                 onPressed: () {
                   confettiController.play();
                 },
-                child: const Text('Gmail'),
+                child: const Text('Mail Signatur kopieren'),
               ),
             ),
           ],
