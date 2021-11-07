@@ -22,6 +22,8 @@ dependencies:
   confetti: ^0.6.0
   flutter_svg: ^0.23.0+1
   url_launcher: ^6.0.12
+  equatable: ^2.0.3
+  formz: ^0.4.1
 
 dev_dependencies:
   flutter_test:

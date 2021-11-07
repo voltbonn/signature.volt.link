@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:signature_volt_link/config/volt_color.dart';
-import 'package:signature_volt_link/signature/cubit/signature_cubit.dart';
 
 class SignaturePreview extends StatelessWidget {
   final ConfettiController confettiController;

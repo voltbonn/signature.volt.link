@@ -73,7 +73,7 @@ class App extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const SignaturePage(),
+      home: SignaturePage(),
     );
   }
 }

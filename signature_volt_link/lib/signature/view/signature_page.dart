@@ -21,7 +21,7 @@ class SignaturePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SignatureCubit(),
+      create: (_) => SignatureBloc(),
       child: SignatureView(),
     );
   }
@@ -52,7 +52,7 @@ class SignatureView extends StatelessWidget {
                   SizedBox(width: 25),
                   SignaturePreview(
                     confettiController:
-                        context.read<SignatureCubit>().confettiController,
+                        context.read<SignatureBloc>().confettiController,
                   ),
                 ],
               ),
@@ -66,7 +66,7 @@ class SignatureView extends StatelessWidget {
                         "Impressum",
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
-                      onPressed: () => context.read<SignatureCubit>().launchURL(
+                      onPressed: () => context.read<SignatureBloc>().launchURL(
                           "https://www.voltdeutschland.org/impressum"),
                     ),
                     footerDivider(context),
@@ -75,7 +75,7 @@ class SignatureView extends StatelessWidget {
                         "Datenschutz",
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
-                      onPressed: () => context.read<SignatureCubit>().launchURL(
+                      onPressed: () => context.read<SignatureBloc>().launchURL(
                           "https://www.voltdeutschland.org/datenschutz"),
                     ),
                     footerDivider(context),
@@ -84,7 +84,7 @@ class SignatureView extends StatelessWidget {
                         "Quellcode",
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
-                      onPressed: () => context.read<SignatureCubit>().launchURL(
+                      onPressed: () => context.read<SignatureBloc>().launchURL(
                           "https://github.com/voltbonn/signature.volt.link"),
                     ),
                     footerDivider(context),
@@ -94,7 +94,7 @@ class SignatureView extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                       onPressed: () => context
-                          .read<SignatureCubit>()
+                          .read<SignatureBloc>()
                           .launchURL("mailto:"), // TODO: Add mail
                     ),
                   ],
@@ -112,16 +112,5 @@ class SignatureView extends StatelessWidget {
       "  •  ",
       style: Theme.of(context).textTheme.bodyText1,
     );
-  }
-}
-
-class SignatureText extends StatelessWidget {
-  const SignatureText({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final count = context.select((SignatureCubit cubit) => cubit.state);
-    return Text('$count', style: theme.textTheme.headline1);
   }
 }
