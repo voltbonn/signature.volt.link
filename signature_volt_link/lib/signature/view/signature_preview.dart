@@ -17,7 +17,7 @@ class SignaturePreview extends StatelessWidget {
     var widthDesktopPreview = MediaQuery.of(context).size.width * 0.90;
     var heightDesktopPreview = MediaQuery.of(context).size.height * 0.70;
     if (isScreenWide) {
-      var widthDesktopPreview = MediaQuery.of(context).size.width * 0.40;
+      widthDesktopPreview = MediaQuery.of(context).size.width * 0.50;
     }
     var defaultHeightSizedBox = 15.0;
 

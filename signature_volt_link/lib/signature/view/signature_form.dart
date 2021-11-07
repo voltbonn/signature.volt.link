@@ -10,7 +10,7 @@ class SignatureForm extends StatelessWidget {
     var widthDesktopForm = MediaQuery.of(context).size.width * 0.90;
     var heightDesktopForm = MediaQuery.of(context).size.height * 0.70;
     if (isScreenWide) {
-      var widthDesktopForm = MediaQuery.of(context).size.width * 0.40;
+      widthDesktopForm = MediaQuery.of(context).size.width * 0.40;
     }
     var defaultHeightSizedBox = 15.0;
 
