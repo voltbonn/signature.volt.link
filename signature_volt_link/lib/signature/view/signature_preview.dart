@@ -13,8 +13,12 @@ class SignaturePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var widthDesktopPreview = MediaQuery.of(context).size.width * 0.50;
+    bool isScreenWide = MediaQuery.of(context).size.width >= 600;
+    var widthDesktopPreview = MediaQuery.of(context).size.width * 0.90;
     var heightDesktopPreview = MediaQuery.of(context).size.height * 0.70;
+    if (isScreenWide) {
+      var widthDesktopPreview = MediaQuery.of(context).size.width * 0.40;
+    }
     var defaultHeightSizedBox = 15.0;
 
     Path drawStar(Size size) {

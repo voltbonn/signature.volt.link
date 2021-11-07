@@ -30,77 +30,86 @@ class SignaturePage extends StatelessWidget {
 class SignatureView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isScreenWide = MediaQuery.of(context).size.width >= 600;
     final l10n = context.l10n;
     return Scaffold(
       body: Container(
         color: const Color.fromARGB(255, 20, 0, 34),
         child: Center(
-          child: Column(
-            children: [
-              Padding(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                    child: SvgPicture.asset('images/volt_logo_purple.svg')),
+                Padding(
                   padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                  child: SvgPicture.asset('images/volt_logo_purple.svg')),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                child: Text(l10n.signatureAppBarTitle,
-                    style: Theme.of(context).textTheme.headline1),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SignatureForm(),
-                  SizedBox(width: 25),
-                  SignaturePreview(
-                    confettiController:
-                        context.read<SignatureBloc>().confettiController,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                child: Row(
+                  child: Text(l10n.signatureAppBarTitle,
+                      style: Theme.of(context).textTheme.headline1),
+                ),
+                Flex(
+                  direction: isScreenWide ? Axis.horizontal : Axis.vertical,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextButton(
-                      child: Text(
-                        "Impressum",
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      onPressed: () => context.read<SignatureBloc>().launchURL(
-                          "https://www.voltdeutschland.org/impressum"),
-                    ),
-                    footerDivider(context),
-                    TextButton(
-                      child: Text(
-                        "Datenschutz",
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      onPressed: () => context.read<SignatureBloc>().launchURL(
-                          "https://www.voltdeutschland.org/datenschutz"),
-                    ),
-                    footerDivider(context),
-                    TextButton(
-                      child: Text(
-                        "Quellcode",
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      onPressed: () => context.read<SignatureBloc>().launchURL(
-                          "https://github.com/voltbonn/signature.volt.link"),
-                    ),
-                    footerDivider(context),
-                    TextButton(
-                      child: Text(
-                        "Kontakt",
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      onPressed: () => context
-                          .read<SignatureBloc>()
-                          .launchURL("mailto:"), // TODO: Add mail
+                    const SignatureForm(),
+                    const SizedBox(width: 25),
+                    SignaturePreview(
+                      confettiController:
+                          context.read<SignatureBloc>().confettiController,
                     ),
                   ],
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        child: Text(
+                          "Impressum",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        onPressed: () => context
+                            .read<SignatureBloc>()
+                            .launchURL(
+                                "https://www.voltdeutschland.org/impressum"),
+                      ),
+                      footerDivider(context),
+                      TextButton(
+                        child: Text(
+                          "Datenschutz",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        onPressed: () => context
+                            .read<SignatureBloc>()
+                            .launchURL(
+                                "https://www.voltdeutschland.org/datenschutz"),
+                      ),
+                      footerDivider(context),
+                      TextButton(
+                        child: Text(
+                          "Quellcode",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        onPressed: () => context.read<SignatureBloc>().launchURL(
+                            "https://github.com/voltbonn/signature.volt.link"),
+                      ),
+                      footerDivider(context),
+                      TextButton(
+                        child: Text(
+                          "Kontakt",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        onPressed: () => context
+                            .read<SignatureBloc>()
+                            .launchURL("mailto:"), // TODO: Add mail
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
