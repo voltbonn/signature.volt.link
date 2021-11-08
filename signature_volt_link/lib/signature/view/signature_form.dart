@@ -6,9 +6,8 @@ class SignatureForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isScreenWide = MediaQuery.of(context).size.width >= 600;
+    bool isScreenWide = MediaQuery.of(context).size.width >= 900;
     var widthDesktopForm = MediaQuery.of(context).size.width * 0.90;
-    var heightDesktopForm = MediaQuery.of(context).size.height * 0.70;
     if (isScreenWide) {
       widthDesktopForm = MediaQuery.of(context).size.width * 0.40;
     }
@@ -16,7 +15,6 @@ class SignatureForm extends StatelessWidget {
 
     return Container(
       width: widthDesktopForm,
-      height: heightDesktopForm,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(10.0),

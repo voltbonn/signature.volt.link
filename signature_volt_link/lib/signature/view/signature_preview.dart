@@ -13,9 +13,8 @@ class SignaturePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isScreenWide = MediaQuery.of(context).size.width >= 600;
+    bool isScreenWide = MediaQuery.of(context).size.width >= 900;
     var widthDesktopPreview = MediaQuery.of(context).size.width * 0.90;
-    var heightDesktopPreview = MediaQuery.of(context).size.height * 0.70;
     if (isScreenWide) {
       widthDesktopPreview = MediaQuery.of(context).size.width * 0.50;
     }
@@ -47,7 +46,6 @@ class SignaturePreview extends StatelessWidget {
 
     return Container(
       width: widthDesktopPreview,
-      height: heightDesktopPreview,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
         child: Column(
@@ -195,6 +193,7 @@ class SignaturePreview extends StatelessWidget {
                 child: const Text('Mail Signatur kopieren'),
               ),
             ),
+            const SizedBox(height: 100),
           ],
         ),
       ),

@@ -22,15 +22,17 @@ class SignaturePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SignatureBloc(),
-      child: SignatureView(),
+      child: const SignatureView(),
     );
   }
 }
 
 class SignatureView extends StatelessWidget {
+  const SignatureView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    bool isScreenWide = MediaQuery.of(context).size.width >= 600;
+    bool isScreenWide = MediaQuery.of(context).size.width >= 900;
     final l10n = context.l10n;
     return Scaffold(
       body: Container(
@@ -45,8 +47,11 @@ class SignatureView extends StatelessWidget {
                     child: SvgPicture.asset('images/volt_logo_purple.svg')),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                  child: Text(l10n.signatureAppBarTitle,
-                      style: Theme.of(context).textTheme.headline1),
+                  child: Text(
+                    l10n.signatureAppBarTitle,
+                    style: Theme.of(context).textTheme.headline1,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Flex(
                   direction: isScreenWide ? Axis.horizontal : Axis.vertical,
@@ -62,50 +67,53 @@ class SignatureView extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        child: Text(
-                          "Impressum",
-                          style: Theme.of(context).textTheme.bodyText1,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          child: Text(
+                            "Impressum",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          onPressed: () => context
+                              .read<SignatureBloc>()
+                              .launchURL(
+                                  "https://www.voltdeutschland.org/impressum"),
                         ),
-                        onPressed: () => context
-                            .read<SignatureBloc>()
-                            .launchURL(
-                                "https://www.voltdeutschland.org/impressum"),
-                      ),
-                      footerDivider(context),
-                      TextButton(
-                        child: Text(
-                          "Datenschutz",
-                          style: Theme.of(context).textTheme.bodyText1,
+                        footerDivider(context),
+                        TextButton(
+                          child: Text(
+                            "Datenschutz",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          onPressed: () => context
+                              .read<SignatureBloc>()
+                              .launchURL(
+                                  "https://www.voltdeutschland.org/datenschutz"),
                         ),
-                        onPressed: () => context
-                            .read<SignatureBloc>()
-                            .launchURL(
-                                "https://www.voltdeutschland.org/datenschutz"),
-                      ),
-                      footerDivider(context),
-                      TextButton(
-                        child: Text(
-                          "Quellcode",
-                          style: Theme.of(context).textTheme.bodyText1,
+                        footerDivider(context),
+                        TextButton(
+                          child: Text(
+                            "Quellcode",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          onPressed: () => context.read<SignatureBloc>().launchURL(
+                              "https://github.com/voltbonn/signature.volt.link"),
                         ),
-                        onPressed: () => context.read<SignatureBloc>().launchURL(
-                            "https://github.com/voltbonn/signature.volt.link"),
-                      ),
-                      footerDivider(context),
-                      TextButton(
-                        child: Text(
-                          "Kontakt",
-                          style: Theme.of(context).textTheme.bodyText1,
+                        footerDivider(context),
+                        TextButton(
+                          child: Text(
+                            "Kontakt",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          onPressed: () => context
+                              .read<SignatureBloc>()
+                              .launchURL("mailto:"), // TODO: Add mail
                         ),
-                        onPressed: () => context
-                            .read<SignatureBloc>()
-                            .launchURL("mailto:"), // TODO: Add mail
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],
