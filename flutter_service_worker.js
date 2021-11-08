@@ -7,9 +7,9 @@ const RESOURCES = {
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
-"favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "19a527708d2d674e5d5bf1862e4ab2b2",
-"/": "19a527708d2d674e5d5bf1862e4ab2b2",
+"favicon.png": "b98a2fc9e00a0baaa82cd9ef31d16ba3",
+"index.html": "6a88641a0965fa0b996d9b69184c1e28",
+"/": "6a88641a0965fa0b996d9b69184c1e28",
 "manifest.json": "12718f6a94e95b8a16565ddea4e607a3",
 "Ubuntu-Bold.ttf": "e00e2a77dd88a8fe75573a5d993af76a",
 "version.json": "8663c355fc6b199a87e2b8cfd8daad39",
@@ -20,9 +20,10 @@ const RESOURCES = {
 "assets/FontManifest.json": "734b361e2a1786a1c10bfc7452f2c8c8",
 "assets/assets/fonts/Ubuntu-Bold.ttf": "e00e2a77dd88a8fe75573a5d993af76a",
 "assets/assets/fonts/Ubuntu-Regular.ttf": "2505bfbd9bde14a7829cc8c242a0d25c",
+"assets/assets/html/signature.txt": "94eb692473ad71a6da848d543da85c27",
 "assets/assets/images/volt_logo_purple.svg": "8fd76992f814ef2f7e6befaa63fbcf5e",
-"assets/AssetManifest.json": "8486c96890040fba54fbecde1c692157",
-"main.dart.js": "7cb36be19648e5735770bf8e12dd8f7b"
+"assets/AssetManifest.json": "2336b42ef0c4dbb8f0ba38ea3132bfc5",
+"main.dart.js": "0466c8a969d70268f0188e701638f3cf"
 };
 
 // The application shell files that are downloaded before a service worker can

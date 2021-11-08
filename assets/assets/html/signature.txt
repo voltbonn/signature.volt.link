@@ -1,0 +1,4 @@
+<b>Jean Placeholder</b><br>
+  <b>DE Placholder</b>
+  <p>Volt Euroopa / Volt Deutschland</p>
+  <a href="mailto:jean.placeholder@volteuropa.org">jean.placeholder@volteuropa.org</a>
