@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 import 'package:signature_volt_link/signature/models/models.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 part 'signature_event.dart';
 part 'signature_state.dart';
@@ -25,11 +26,13 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     on<LocationUnfocused>(_onLocationUnfocused);
     on<PositionUnfocused>(_onPositionUnfocused);
     on<PronomUnfocused>(_onPronomUnfocused);
+
+    on<FormSubmitted>(_onFormSubmitted);
   }
 
   @override
   void onTransition(Transition<SignatureEvent, SignatureState> transition) {
-    print(transition);
+    debugPrint(transition.toString());
     super.onTransition(transition);
   }
 
@@ -44,6 +47,10 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
       return true;
     }
     return false;
+  }
+
+  Future<String> loadSignature() async {
+    return await rootBundle.loadString('assets/html/signature.txt');
   }
 
   Path drawStar(Size size) {

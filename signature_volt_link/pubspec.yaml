@@ -38,6 +38,7 @@ flutter:
   generate: true
   assets:
     - assets/images/volt_logo_purple.svg
+    - assets/html/signature.txt
 
   fonts:
     - family: Ubuntu
