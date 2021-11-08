@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:bloc/bloc.dart';
 import 'package:confetti/confetti.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 import 'package:signature_volt_link/signature/models/models.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -37,6 +38,13 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void launchURL(url) async =>
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+
+  bool isScreenWide(BuildContext context) {
+    if (MediaQuery.of(context).size.width >= 900) {
+      return true;
+    }
+    return false;
+  }
 
   Path drawStar(Size size) {
     // Method to convert degree to radians
