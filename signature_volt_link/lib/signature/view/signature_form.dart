@@ -4,10 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signature_volt_link/signature/signature.dart';
 
 class SignatureForm extends StatelessWidget {
-  const SignatureForm({Key? key, required this.nameFocusNode})
-      : super(key: key);
+  const SignatureForm({Key? key, required this.focusNode}) : super(key: key);
 
-  final FocusNode nameFocusNode;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +60,18 @@ class SignatureForm extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
                     child: TextFormField(
-                      initialValue: state.email.value,
-                      focusNode: nameFocusNode,
+                      initialValue: state.name.value,
+                      focusNode: focusNode,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Jean Placeholder',
                       ),
+                      onChanged: (value) {
+                        context
+                            .read<SignatureBloc>()
+                            .add(NameChanged(name: value));
+                      },
+                      textInputAction: TextInputAction.next,
                     ),
                   ),
                 ),
@@ -79,13 +84,21 @@ class SignatureForm extends StatelessWidget {
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
-                    child: TextField(
-                      decoration: InputDecoration(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                    child: TextFormField(
+                      initialValue: state.email.value,
+                      focusNode: focusNode,
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'jean.placeholder@volteurope.org',
                       ),
+                      onChanged: (value) {
+                        context
+                            .read<SignatureBloc>()
+                            .add(EmailChanged(email: value));
+                      },
+                      textInputAction: TextInputAction.next,
                     ),
                   ),
                 ),
@@ -98,13 +111,21 @@ class SignatureForm extends StatelessWidget {
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
-                    child: TextField(
-                      decoration: InputDecoration(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                    child: TextFormField(
+                      initialValue: state.location.value,
+                      focusNode: focusNode,
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Germany',
                       ),
+                      onChanged: (value) {
+                        context
+                            .read<SignatureBloc>()
+                            .add(LocationChanged(location: value));
+                      },
+                      textInputAction: TextInputAction.next,
                     ),
                   ),
                 ),
@@ -117,13 +138,21 @@ class SignatureForm extends StatelessWidget {
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
-                    child: TextField(
-                      decoration: InputDecoration(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                    child: TextFormField(
+                      initialValue: state.position.value,
+                      focusNode: focusNode,
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Lead Placeholder',
                       ),
+                      onChanged: (value) {
+                        context
+                            .read<SignatureBloc>()
+                            .add(PositionChanged(position: value));
+                      },
+                      textInputAction: TextInputAction.next,
                     ),
                   ),
                 ),
@@ -136,8 +165,8 @@ class SignatureForm extends StatelessWidget {
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
                     // child: DropdownButton(
                     //   isExpanded: true,
                     //   value: pronomDropdownValue,
