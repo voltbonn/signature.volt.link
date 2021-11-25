@@ -5,8 +5,6 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,20 +22,25 @@ class SignaturePage extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (_) => SignatureBloc(),
-        child: Signature(),
+        child: const Signature(),
       ),
     );
   }
 }
 
 class Signature extends StatefulWidget {
+  const Signature({Key? key}) : super(key: key);
+
   @override
   _SignatureState createState() => _SignatureState();
 }
 
 class _SignatureState extends State<Signature> {
-  final _emailFocusNode = FocusNode();
   final _nameFocusNode = FocusNode();
+  final _emailFocusNode = FocusNode();
+  final _locationFocusNode = FocusNode();
+  final _positionFocusNode = FocusNode();
+  final _pronomFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -53,12 +56,33 @@ class _SignatureState extends State<Signature> {
         FocusScope.of(context).requestFocus(_emailFocusNode);
       }
     });
+    _locationFocusNode.addListener(() {
+      if (!_locationFocusNode.hasFocus) {
+        context.read<SignatureBloc>().add(LocationUnfocused());
+        FocusScope.of(context).requestFocus(_locationFocusNode);
+      }
+    });
+    _positionFocusNode.addListener(() {
+      if (!_positionFocusNode.hasFocus) {
+        context.read<SignatureBloc>().add(PositionUnfocused());
+        FocusScope.of(context).requestFocus(_positionFocusNode);
+      }
+    });
+    _pronomFocusNode.addListener(() {
+      if (!_pronomFocusNode.hasFocus) {
+        context.read<SignatureBloc>().add(PronomUnfocused());
+        FocusScope.of(context).requestFocus(_pronomFocusNode);
+      }
+    });
   }
 
   @override
   void dispose() {
     _nameFocusNode.dispose();
     _emailFocusNode.dispose();
+    _locationFocusNode.dispose();
+    _positionFocusNode.dispose();
+    _pronomFocusNode.dispose();
     super.dispose();
   }
 
@@ -71,7 +95,7 @@ class _SignatureState extends State<Signature> {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           showDialog<void>(
             context: context,
-            builder: (_) => SuccessDialog(),
+            builder: (_) => const SuccessDialog(),
           );
         }
         if (state.status.isSubmissionInProgress) {
@@ -107,7 +131,7 @@ class _SignatureState extends State<Signature> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SignatureForm(
-                      nameFocusNode: _nameFocusNode,
+                      focusNode: _nameFocusNode,
                     ),
                     const SizedBox(width: 25),
                     SignaturePreview(
@@ -161,7 +185,8 @@ class _SignatureState extends State<Signature> {
                           ),
                           onPressed: () => context
                               .read<SignatureBloc>()
-                              .launchURL("mailto:"), // TODO: Add mail
+                              .launchURL(
+                                  "mailto:dominik.springer@volteuropa.org"),
                         ),
                       ],
                     ),
@@ -184,6 +209,8 @@ class _SignatureState extends State<Signature> {
 }
 
 class SuccessDialog extends StatelessWidget {
+  const SuccessDialog({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -197,9 +224,9 @@ class SuccessDialog extends StatelessWidget {
           children: <Widget>[
             Row(
               mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                const Icon(Icons.info),
-                const Flexible(
+              children: const [
+                Icon(Icons.info),
+                Flexible(
                   child: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
