@@ -81,7 +81,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final name = Name.dirty(event.name);
     emit(state.copyWith(
       name: name.valid ? name : Name.pure(event.name),
-      status: Formz.validate([name, state.email]),
+      status: Formz.validate(
+          [name, state.email, state.location, state.position, state.pronom]),
     ));
   }
 
@@ -89,7 +90,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final email = Email.dirty(event.email);
     emit(state.copyWith(
       email: email.valid ? email : Email.pure(event.email),
-      status: Formz.validate([email, state.name]),
+      status: Formz.validate(
+          [email, state.name, state.location, state.position, state.pronom]),
     ));
   }
 
@@ -97,7 +99,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final location = Location.dirty(event.location);
     emit(state.copyWith(
       location: location.valid ? location : Location.pure(event.location),
-      status: Formz.validate([location, state.email]),
+      status: Formz.validate(
+          [location, state.name, state.email, state.position, state.pronom]),
     ));
   }
 
@@ -105,7 +108,14 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final position = Position.dirty(event.position);
     emit(state.copyWith(
       position: position.valid ? position : Position.pure(event.position),
-      status: Formz.validate([position, state.email]),
+      status: Formz.validate([
+        position,
+        state.email,
+        state.name,
+        state.email,
+        state.location,
+        state.pronom
+      ]),
     ));
   }
 
@@ -113,7 +123,14 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final pronom = Pronom.dirty(event.pronom);
     emit(state.copyWith(
       pronom: pronom.valid ? pronom : Pronom.pure(event.pronom),
-      status: Formz.validate([pronom, state.email]),
+      status: Formz.validate([
+        pronom,
+        state.email,
+        state.name,
+        state.email,
+        state.position,
+        state.location
+      ]),
     ));
   }
 
