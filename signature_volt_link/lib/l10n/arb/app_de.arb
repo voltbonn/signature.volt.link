@@ -1,7 +1,130 @@
 {
-    "@@locale": "de",
-    "signatureAppBarTitle": "Mail Signatur Generator",
-    "@signatureAppBarTitle": {
-        "description": "Text shown in the AppBar of the Signature Page"
-    }
+  "@@locale": "de",
+  "@@last_modified": "2021-11-25T22:00:00.667",
+  "appTitle": "Mail Signatur Generator",
+  "formHeadline": "Deine Daten.",
+  "previewHeadline": "Dein Ding.",
+  "formDescription": "Bitte trage hier Deine Daten ein, damit Deine persönliche Mail Signatur generiert werden kann.",
+  "previewDescription": "Hier kannst Du sehen wie Deine Mail Signatur aussieht, wenn alles passt kannst Du die Signatur unten herunterladen.",
+  "formNameText": "Dein Name:",
+  "formNamePlaceholder": "Jean Placeholder",
+  "formMailText": "Deine Mail Adresse:",
+  "formMailPlaceholder": "jean.placeholder@volteuropa.org",
+  "formLocationText": "Dein Ort:",
+  "formLocationPlaceholder": "Deutschland",
+  "formPositionText": "Deine Position:",
+  "formPositionPlaceholder": "Lead Placeholder",
+  "pronomText": "(Optional) Wähle aus wie Du angesprochen werden möchtest:",
+  "previewFromText": "An: placeholder@volteuropa.org",
+  "previewSubjectText": "Betreff: Meine neue Volt Signatur",
+  "copyMailSignatureButtonText": "Mail Signatur kopieren",
+  "imprintText": "Impressum",
+  "privacyText": "Datenschutz",
+  "sourcecodeText": "Quellcode",
+  "contactText": "Kontakt",
+  "@appTitle": {
+    "placeholders": {},
+    "description": "Text shown in the AppBar of the Signature Page",
+    "type": "text"
+  },
+  "@formHeadline": {
+    "placeholders": {},
+    "description": "Headline for the form view.",
+    "type": "text"
+  },
+  "@previewHeadline": {
+    "placeholders": {},
+    "description": "Headline for the preview.",
+    "type": "text"
+  },
+  "@formDescription": {
+    "placeholders": {},
+    "description": "Description for the form view.",
+    "type": "text"
+  },
+  "@previewDescription": {
+    "placeholders": {},
+    "description": "Description for the preview.",
+    "type": "text"
+  },
+  "@formNameText": {
+    "placeholders": {},
+    "description": "Text above the name text field.",
+    "type": "text"
+  },
+  "@formNamePlaceholder": {
+    "placeholders": {},
+    "description": "Placeholder in the name text field.",
+    "type": "text"
+  },
+  "@formMailText": {
+    "placeholders": {},
+    "description": "",
+    "type": "text"
+  },
+  "@formMailPlaceholder": {
+    "placeholders": {},
+    "description": "Placeholder in the mail address field.",
+    "type": "text"
+  },
+  "@formLocationText": {
+    "placeholders": {},
+    "description": "Text above the location text field.",
+    "type": "text"
+  },
+  "@formLocationPlaceholder": {
+    "placeholders": {},
+    "description": "Placeholder in the mail address field.",
+    "type": "text"
+  },
+  "@formPositionText": {
+    "placeholders": {},
+    "description": "Text above the position text field.",
+    "type": "text"
+  },
+  "@formPositionPlaceholder": {
+    "placeholders": {},
+    "description": "Placeholder in the position address field.",
+    "type": "text"
+  },
+  "@pronomText": {
+    "placeholders": {},
+    "description": "Text above the pronom drop down menu",
+    "type": "text"
+  },
+  "@previewFromText": {
+    "placeholders": {},
+    "description": "\"From\" text in the mail previe.",
+    "type": "text"
+  },
+  "@previewSubjectText": {
+    "placeholders": {},
+    "description": "\"Subject\" text in the mail preview.",
+    "type": "text"
+  },
+  "@copyMailSignatureButtonText": {
+    "placeholders": {},
+    "description": "Text on the button, to copy the mail signature.",
+    "type": "text"
+  },
+  "@imprintText": {
+    "placeholders": {},
+    "description": "Imprint text, that text is linked with the volt imprint",
+    "type": "text"
+  },
+  "@privacyText": {
+    "placeholders": {},
+    "description": "Privacy text, that text is linked with the volt pirivacy",
+    "type": "text"
+  },
+  "@sourcecodeText": {
+    "placeholders": {},
+    "description": "Source code text linked to github.com",
+    "type": "text"
+  },
+  "@contactText": {
+    "placeholders": {},
+    "description": "Contact text to write an mail to the developer of the tool",
+    "type": "text"
+  }
 }

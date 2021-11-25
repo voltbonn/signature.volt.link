@@ -119,7 +119,7 @@ class _SignatureState extends State<Signature> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                   child: Text(
-                    l10n.signatureAppBarTitle,
+                    l10n.appTitle,
                     style: Theme.of(context).textTheme.headline1,
                     textAlign: TextAlign.center,
                   ),
