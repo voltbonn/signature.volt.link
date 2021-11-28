@@ -4,9 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signature_volt_link/signature/signature.dart';
 
 class SignatureForm extends StatelessWidget {
-  const SignatureForm({Key? key, required this.focusNode}) : super(key: key);
+  const SignatureForm(
+      {Key? key,
+      required this.focusNodeName,
+      required this.focusNodeMail,
+      required this.focusNodeLocation,
+      required this.focusNodePosition})
+      : super(key: key);
 
-  final FocusNode focusNode;
+  final FocusNode focusNodeName;
+  final FocusNode focusNodeMail;
+  final FocusNode focusNodeLocation;
+  final FocusNode focusNodePosition;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +70,7 @@ class SignatureForm extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
                     child: TextFormField(
                       initialValue: state.name.value,
-                      focusNode: focusNode,
+                      focusNode: focusNodeName,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Jean Placeholder',
@@ -88,7 +97,7 @@ class SignatureForm extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
                     child: TextFormField(
                       initialValue: state.email.value,
-                      focusNode: focusNode,
+                      focusNode: focusNodeMail,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'jean.placeholder@volteurope.org',
@@ -115,7 +124,7 @@ class SignatureForm extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
                     child: TextFormField(
                       initialValue: state.location.value,
-                      focusNode: focusNode,
+                      focusNode: focusNodeLocation,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Germany',
@@ -142,7 +151,7 @@ class SignatureForm extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
                     child: TextFormField(
                       initialValue: state.position.value,
-                      focusNode: focusNode,
+                      focusNode: focusNodePosition,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Lead Placeholder',
@@ -159,40 +168,40 @@ class SignatureForm extends StatelessWidget {
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
-                const Text(
-                  "(Optional) Wähle aus wie Du angesprochen werden möchtest:",
-                ),
+                // const Text(
+                //   "(Optional) Wähle aus wie Du angesprochen werden möchtest:",
+                // ),
                 const SizedBox(height: 2),
-                Container(
-                  color: Colors.white,
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
-                    // child: DropdownButton(
-                    //   isExpanded: true,
-                    //   value: pronomDropdownValue,
-                    //   icon: const Icon(Icons.arrow_drop_down),
-                    //   iconSize: 24,
-                    //   elevation: 16,
-                    //   style: TextStyle(color: Theme.of(context).primaryColor),
-                    //   underline: Container(
-                    //     height: 0,
-                    //     color: Theme.of(context).primaryColor,
-                    //   ),
-                    //   onChanged: (String? newValue) {
-                    //     setState(() {
-                    //       pronomDropdownValue = newValue!;
-                    //     });
-                    //   },
-                    //   items: <String>['Sie', 'Er']
-                    //       .map<DropdownMenuItem<String>>((String value) {
-                    //     return DropdownMenuItem<String>(
-                    //       value: value,
-                    //       child: Text(value),
-                    //     );
-                    //   }).toList(),
-                    // ),
-                  ),
-                ),
+                // Container(
+                //   color: Colors.white,
+                //   child: const Padding(
+                //     padding: EdgeInsets.fromLTRB(5, 0, 0, 5),
+                //     child: DropdownButton(
+                //       isExpanded: true,
+                //       value: pronomDropdownValue,
+                //       icon: const Icon(Icons.arrow_drop_down),
+                //       iconSize: 24,
+                //       elevation: 16,
+                //       style: TextStyle(color: Theme.of(context).primaryColor),
+                //       underline: Container(
+                //         height: 0,
+                //         color: Theme.of(context).primaryColor,
+                //       ),
+                //       onChanged: (String? newValue) {
+                //         setState(() {
+                //           pronomDropdownValue = newValue!;
+                //         });
+                //       },
+                //       items: <String>['Sie', 'Er']
+                //           .map<DropdownMenuItem<String>>((String value) {
+                //         return DropdownMenuItem<String>(
+                //           value: value,
+                //           child: Text(value),
+                //         );
+                //       }).toList(),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

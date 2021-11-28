@@ -53,25 +53,21 @@ class _SignatureState extends State<Signature> {
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {
         context.read<SignatureBloc>().add(EmailUnfocused());
-        FocusScope.of(context).requestFocus(_emailFocusNode);
       }
     });
     _locationFocusNode.addListener(() {
       if (!_locationFocusNode.hasFocus) {
         context.read<SignatureBloc>().add(LocationUnfocused());
-        FocusScope.of(context).requestFocus(_locationFocusNode);
       }
     });
     _positionFocusNode.addListener(() {
       if (!_positionFocusNode.hasFocus) {
         context.read<SignatureBloc>().add(PositionUnfocused());
-        FocusScope.of(context).requestFocus(_positionFocusNode);
       }
     });
     _pronomFocusNode.addListener(() {
       if (!_pronomFocusNode.hasFocus) {
         context.read<SignatureBloc>().add(PronomUnfocused());
-        FocusScope.of(context).requestFocus(_pronomFocusNode);
       }
     });
   }
@@ -131,7 +127,10 @@ class _SignatureState extends State<Signature> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SignatureForm(
-                      focusNode: _nameFocusNode,
+                      focusNodeName: _nameFocusNode,
+                      focusNodeMail: _emailFocusNode,
+                      focusNodeLocation: _locationFocusNode,
+                      focusNodePosition: _positionFocusNode,
                     ),
                     const SizedBox(width: 25),
                     SignaturePreview(
