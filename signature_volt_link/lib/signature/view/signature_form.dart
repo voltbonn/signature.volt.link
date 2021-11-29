@@ -71,9 +71,12 @@ class SignatureForm extends StatelessWidget {
                     child: TextFormField(
                       initialValue: state.name.value,
                       focusNode: focusNodeName,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Jean Placeholder',
+                        errorText: state.name.invalid
+                            ? '''Please enter your name.'''
+                            : null,
                       ),
                       onChanged: (value) {
                         context
@@ -98,8 +101,12 @@ class SignatureForm extends StatelessWidget {
                     child: TextFormField(
                       initialValue: state.email.value,
                       focusNode: focusNodeMail,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
+                        errorText: state.email.invalid
+                            ? '''Mail must be valid.'''
+                            : null,
+                        helperMaxLines: 2,
                         hintText: 'jean.placeholder@volteurope.org',
                       ),
                       onChanged: (value) {
@@ -125,9 +132,12 @@ class SignatureForm extends StatelessWidget {
                     child: TextFormField(
                       initialValue: state.location.value,
                       focusNode: focusNodeLocation,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Germany',
+                        errorText: state.location.invalid
+                            ? '''Please enter your name.'''
+                            : null,
                       ),
                       onChanged: (value) {
                         context
@@ -152,9 +162,12 @@ class SignatureForm extends StatelessWidget {
                     child: TextFormField(
                       initialValue: state.position.value,
                       focusNode: focusNodePosition,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Lead Placeholder',
+                        errorText: state.position.invalid
+                            ? '''Please enter your name.'''
+                            : null,
                       ),
                       onChanged: (value) {
                         context
