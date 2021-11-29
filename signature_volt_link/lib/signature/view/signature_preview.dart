@@ -22,7 +22,7 @@ class SignaturePreview extends StatelessWidget {
       widthDesktopPreview = MediaQuery.of(context).size.width * 0.50;
     }
     var defaultHeightSizedBox = 15.0;
-
+    // TODO: Duplicated with signature_bloc
     Path drawStar(Size size) {
       // Method to convert degree to radians
       double degToRad(double deg) => deg * (pi / 180.0);
@@ -48,7 +48,8 @@ class SignaturePreview extends StatelessWidget {
     }
 
     return BlocBuilder<SignatureBloc, SignatureState>(
-      buildWhen: (previous, current) => previous.status != current.status,
+      buildWhen: (previous, current) =>
+          previous.htmlSignature != current.htmlSignature,
       builder: (context, state) {
         return SizedBox(
           width: widthDesktopPreview,
@@ -176,7 +177,6 @@ class SignaturePreview extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: HtmlWidget(
                           state.htmlSignature,
-                          enableCaching: false,
                         ),
                       ),
                     ),

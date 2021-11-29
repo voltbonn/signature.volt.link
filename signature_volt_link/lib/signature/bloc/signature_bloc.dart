@@ -127,19 +127,27 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     ));
   }
 
-  void _onLocationChanged(LocationChanged event, Emitter<SignatureState> emit) {
+  void _onLocationChanged(
+      LocationChanged event, Emitter<SignatureState> emit) async {
     final location = Location.dirty(event.location);
+    final htmlSignature =
+        await updateSignature(location.value, FormField.location);
     emit(state.copyWith(
       location: location.valid ? location : Location.pure(event.location),
+      htmlSignature: htmlSignature,
       status:
           Formz.validate([location, state.name, state.email, state.position]),
     ));
   }
 
-  void _onPositionChanged(PositionChanged event, Emitter<SignatureState> emit) {
+  void _onPositionChanged(
+      PositionChanged event, Emitter<SignatureState> emit) async {
     final position = Position.dirty(event.position);
+    final htmlSignature =
+        await updateSignature(position.value, FormField.position);
     emit(state.copyWith(
       position: position.valid ? position : Position.pure(event.position),
+      htmlSignature: htmlSignature,
       status: Formz.validate([
         position,
         state.email,
