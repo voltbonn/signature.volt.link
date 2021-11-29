@@ -8,8 +8,6 @@ class Pronom extends FormzInput<String, PronomValidationError> {
 
   @override
   PronomValidationError? validator(String? value) {
-    return value != null && value.isNotEmpty
-        ? null
-        : PronomValidationError.invalid;
+    return value != null ? null : PronomValidationError.invalid;
   }
 }

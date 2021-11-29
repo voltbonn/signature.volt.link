@@ -8,8 +8,6 @@ class Location extends FormzInput<String, LocationValidationError> {
 
   @override
   LocationValidationError? validator(String? value) {
-    return value != null && value.isNotEmpty
-        ? null
-        : LocationValidationError.invalid;
+    return value != null ? null : LocationValidationError.invalid;
   }
 }

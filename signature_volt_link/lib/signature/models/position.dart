@@ -8,8 +8,6 @@ class Position extends FormzInput<String, PositionValidationError> {
 
   @override
   PositionValidationError? validator(String? value) {
-    return value != null && value.isNotEmpty
-        ? null
-        : PositionValidationError.invalid;
+    return value != null ? null : PositionValidationError.invalid;
   }
 }
