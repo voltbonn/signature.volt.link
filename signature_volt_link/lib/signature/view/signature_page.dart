@@ -74,6 +74,8 @@ class _SignatureState extends State<Signature> {
         context.read<SignatureBloc>().add(PronomUnfocused());
       }
     });
+
+    context.read<SignatureBloc>().add(LoadHtmlSignature());
   }
 
   @override
@@ -92,6 +94,7 @@ class _SignatureState extends State<Signature> {
     return BlocListener<SignatureBloc, SignatureState>(
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
+          context.read<SignatureBloc>().add(CopyMailSignature());
           context.read<SignatureBloc>().confettiController.play();
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()

@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 import 'package:signature_volt_link/signature/models/models.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart'
+    show Clipboard, ClipboardData, rootBundle;
 
 part 'signature_event.dart';
 part 'signature_state.dart';
@@ -28,6 +29,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     on<PronomUnfocused>(_onPronomUnfocused);
 
     on<FormSubmitted>(_onFormSubmitted);
+    on<LoadHtmlSignature>(_onLoadHtmlSignature);
+    on<CopyMailSignature>(_onCopyMailSignature);
   }
 
   @override
@@ -198,5 +201,18 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
       await Future<void>.delayed(const Duration(seconds: 1));
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
     }
+  }
+
+  void _onLoadHtmlSignature(
+      LoadHtmlSignature event, Emitter<SignatureState> emit) async {
+    final htmlSignature = await loadSignature();
+    emit(state.copyWith(
+      htmlSignature: htmlSignature,
+    ));
+  }
+
+  void _onCopyMailSignature(
+      CopyMailSignature event, Emitter<SignatureState> emit) async {
+    await Clipboard.setData(ClipboardData(text: state.htmlSignature));
   }
 }

@@ -7,6 +7,7 @@ class SignatureState extends Equatable {
     this.location = const Location.pure(),
     this.position = const Position.pure(),
     this.pronom = const Pronom.pure(),
+    this.htmlSignature = "",
     this.status = FormzStatus.pure,
   });
 
@@ -15,6 +16,7 @@ class SignatureState extends Equatable {
   final Location location;
   final Position position;
   final Pronom pronom; // TODO: String to enum
+  final String htmlSignature;
   final FormzStatus status;
 
   SignatureState copyWith({
@@ -23,6 +25,7 @@ class SignatureState extends Equatable {
     Location? location,
     Position? position,
     Pronom? pronom,
+    String? htmlSignature,
     FormzStatus? status,
   }) {
     return SignatureState(
@@ -31,6 +34,7 @@ class SignatureState extends Equatable {
       location: location ?? this.location,
       position: position ?? this.position,
       pronom: pronom ?? this.pronom,
+      htmlSignature: htmlSignature ?? this.htmlSignature,
       status: status ?? this.status,
     );
   }

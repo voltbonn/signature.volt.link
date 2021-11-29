@@ -172,16 +172,11 @@ class SignaturePreview extends StatelessWidget {
                           border: Border.all(
                               width: 1.0,
                               color: const Color.fromARGB(255, 51, 71, 91))),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
                         child: HtmlWidget(
-                          '''
-  <b>Jean Placeholder</b><br>
-  <b>DE Placholder</b>
-  <p>Volt Euroopa / Volt Deutschland</p>
-  <a href="mailto:jean.placeholder@volteuropa.org">jean.placeholder@volteuropa.org</a>
-  <!-- anything goes here -->
-  ''',
+                          state.htmlSignature,
+                          enableCaching: false,
                         ),
                       ),
                     ),

@@ -63,3 +63,7 @@ class PronomChanged extends SignatureEvent {
 class PronomUnfocused extends SignatureEvent {}
 
 class FormSubmitted extends SignatureEvent {}
+
+class LoadHtmlSignature extends SignatureEvent {}
+
+class CopyMailSignature extends SignatureEvent {}
