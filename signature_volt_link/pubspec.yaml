@@ -18,7 +18,7 @@ dependencies:
   flutter_bloc: ^7.3.3
   intl: ^0.17.0
   cupertino_icons: ^1.0.2
-  flutter_widget_from_html_core: ^0.8.1
+  flutter_widget_from_html_core: ^0.8.2
   confetti: ^0.6.0
   flutter_svg: ^0.23.0+1
   url_launcher: ^6.0.12
