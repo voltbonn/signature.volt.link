@@ -14,6 +14,8 @@ import 'package:flutter/services.dart'
 part 'signature_event.dart';
 part 'signature_state.dart';
 
+enum FormField { name, email, location, position }
+
 class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   SignatureBloc() : super(const SignatureState()) {
     on<NameChanged>(_onNameChanged);
@@ -56,6 +58,31 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     return await rootBundle.loadString('assets/html/signature.txt');
   }
 
+  Future<String> updateSignature(String value, FormField formField) async {
+    var htmlSignatureOrg = await loadSignature();
+    var htmlSignature = htmlSignatureOrg;
+    switch (formField) {
+      case FormField.name:
+        htmlSignature =
+            htmlSignatureOrg.replaceFirst('Jean Placeholder', value);
+        break;
+      case FormField.email:
+        htmlSignature = htmlSignatureOrg.replaceFirst(
+            'jean.placeholder@volteuropa.org', value);
+        break;
+      case FormField.location:
+        htmlSignature = htmlSignatureOrg.replaceFirst(
+            'Volt Europa / Volt Deutschland', value);
+        break;
+      case FormField.position:
+        htmlSignature = htmlSignatureOrg.replaceFirst('DE Placholder', value);
+        break;
+      default:
+    }
+
+    return htmlSignature;
+  }
+
   Path drawStar(Size size) {
     // Method to convert degree to radians
     double degToRad(double deg) => deg * (pi / 180.0);
@@ -80,16 +107,18 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     return path;
   }
 
-  void _onNameChanged(NameChanged event, Emitter<SignatureState> emit) {
+  void _onNameChanged(NameChanged event, Emitter<SignatureState> emit) async {
     final name = Name.dirty(event.name);
+    final htmlSignature = await updateSignature(name.value, FormField.name);
     emit(state.copyWith(
       name: name.valid ? name : Name.pure(event.name),
+      htmlSignature: htmlSignature,
       status:
           Formz.validate([name, state.email, state.location, state.position]),
     ));
   }
 
-  void _onEmailChanged(EmailChanged event, Emitter<SignatureState> emit) {
+  void _onEmailChanged(EmailChanged event, Emitter<SignatureState> emit) async {
     final email = Email.dirty(event.email);
     emit(state.copyWith(
       email: email.valid ? email : Email.pure(event.email),
