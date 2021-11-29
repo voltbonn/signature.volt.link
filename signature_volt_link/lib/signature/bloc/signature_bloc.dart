@@ -138,7 +138,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final name = Name.dirty(state.email.value);
     emit(state.copyWith(
       name: name,
-      status: Formz.validate([name, state.name]),
+      status: Formz.validate(
+          [name, state.email, state.location, state.position, state.pronom]),
     ));
   }
 
@@ -146,7 +147,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final email = Email.dirty(state.email.value);
     emit(state.copyWith(
       email: email,
-      status: Formz.validate([email, state.name]),
+      status: Formz.validate(
+          [state.name, state.location, state.position, state.pronom]),
     ));
   }
 
@@ -155,16 +157,24 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final location = Location.dirty(state.location.value);
     emit(state.copyWith(
       location: location,
-      status: Formz.validate([location, state.name]),
+      status: Formz.validate(
+          [location, state.name, state.email, state.position, state.pronom]),
     ));
   }
 
   void _onPositionUnfocused(
       PositionUnfocused event, Emitter<SignatureState> emit) {
-    final positon = Position.dirty(state.position.value);
+    final position = Position.dirty(state.position.value);
     emit(state.copyWith(
-      position: positon,
-      status: Formz.validate([positon, state.name]),
+      position: position,
+      status: Formz.validate([
+        position,
+        state.email,
+        state.name,
+        state.email,
+        state.location,
+        state.pronom
+      ]),
     ));
   }
 
@@ -172,7 +182,14 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final pronom = Pronom.dirty(state.email.value);
     emit(state.copyWith(
       pronom: pronom,
-      status: Formz.validate([pronom, state.name]),
+      status: Formz.validate([
+        pronom,
+        state.email,
+        state.name,
+        state.email,
+        state.position,
+        state.location
+      ]),
     ));
   }
 

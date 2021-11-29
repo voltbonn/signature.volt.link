@@ -48,16 +48,19 @@ class _SignatureState extends State<Signature> {
     _nameFocusNode.addListener(() {
       if (!_nameFocusNode.hasFocus) {
         context.read<SignatureBloc>().add(NameUnfocused());
+        FocusScope.of(context).requestFocus(_emailFocusNode);
       }
     });
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {
         context.read<SignatureBloc>().add(EmailUnfocused());
+        FocusScope.of(context).requestFocus(_locationFocusNode);
       }
     });
     _locationFocusNode.addListener(() {
       if (!_locationFocusNode.hasFocus) {
         context.read<SignatureBloc>().add(LocationUnfocused());
+        FocusScope.of(context).requestFocus(_positionFocusNode);
       }
     });
     _positionFocusNode.addListener(() {
