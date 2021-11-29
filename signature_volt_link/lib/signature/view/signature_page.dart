@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
+import 'package:signature_volt_link/config/volt_color.dart';
 import 'package:signature_volt_link/signature/signature.dart';
 import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/view/signature_form.dart';
@@ -91,17 +92,21 @@ class _SignatureState extends State<Signature> {
     return BlocListener<SignatureBloc, SignatureState>(
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
-          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          showDialog<void>(
-            context: context,
-            builder: (_) => const SuccessDialog(),
-          );
+          context.read<SignatureBloc>().confettiController.play();
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              const SnackBar(
+                content: Text('Mail signature is in your Clipboard'),
+                backgroundColor: VoltColor.green,
+              ),
+            );
         }
         if (state.status.isSubmissionInProgress) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              const SnackBar(content: Text('Submitting...')),
+              const SnackBar(content: Text('Prepare mail signature...')),
             );
         }
       },
@@ -206,46 +211,6 @@ class _SignatureState extends State<Signature> {
     return Text(
       "  •  ",
       style: Theme.of(context).textTheme.bodyText1,
-    );
-  }
-}
-
-class SuccessDialog extends StatelessWidget {
-  const SuccessDialog({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: const [
-                Icon(Icons.info),
-                Flexible(
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Form Submitted Successfully!',
-                      softWrap: true,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            ElevatedButton(
-              child: const Text('OK'),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
