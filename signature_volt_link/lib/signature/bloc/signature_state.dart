@@ -36,5 +36,5 @@ class SignatureState extends Equatable {
   }
 
   @override
-  List<Object> get props => [name, email, location, position, pronom, status];
+  List<Object> get props => [name, email, location, position, status];
 }

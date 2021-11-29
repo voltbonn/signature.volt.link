@@ -81,8 +81,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final name = Name.dirty(event.name);
     emit(state.copyWith(
       name: name.valid ? name : Name.pure(event.name),
-      status: Formz.validate(
-          [name, state.email, state.location, state.position, state.pronom]),
+      status:
+          Formz.validate([name, state.email, state.location, state.position]),
     ));
   }
 
@@ -90,8 +90,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final email = Email.dirty(event.email);
     emit(state.copyWith(
       email: email.valid ? email : Email.pure(event.email),
-      status: Formz.validate(
-          [email, state.name, state.location, state.position, state.pronom]),
+      status:
+          Formz.validate([email, state.name, state.location, state.position]),
     ));
   }
 
@@ -99,8 +99,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final location = Location.dirty(event.location);
     emit(state.copyWith(
       location: location.valid ? location : Location.pure(event.location),
-      status: Formz.validate(
-          [location, state.name, state.email, state.position, state.pronom]),
+      status:
+          Formz.validate([location, state.name, state.email, state.position]),
     ));
   }
 
@@ -112,9 +112,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
         position,
         state.email,
         state.name,
-        state.email,
         state.location,
-        state.pronom
       ]),
     ));
   }
@@ -129,7 +127,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
         state.name,
         state.email,
         state.position,
-        state.location
+        state.location,
+        state.pronom,
       ]),
     ));
   }
@@ -138,8 +137,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final name = Name.dirty(state.email.value);
     emit(state.copyWith(
       name: name,
-      status: Formz.validate(
-          [name, state.email, state.location, state.position, state.pronom]),
+      status:
+          Formz.validate([name, state.email, state.location, state.position]),
     ));
   }
 
@@ -147,8 +146,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final email = Email.dirty(state.email.value);
     emit(state.copyWith(
       email: email,
-      status: Formz.validate(
-          [state.name, state.location, state.position, state.pronom]),
+      status:
+          Formz.validate([email, state.name, state.location, state.position]),
     ));
   }
 
@@ -157,8 +156,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final location = Location.dirty(state.location.value);
     emit(state.copyWith(
       location: location,
-      status: Formz.validate(
-          [location, state.name, state.email, state.position, state.pronom]),
+      status:
+          Formz.validate([location, state.name, state.email, state.position]),
     ));
   }
 
@@ -171,9 +170,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
         position,
         state.email,
         state.name,
-        state.email,
         state.location,
-        state.pronom
       ]),
     ));
   }
@@ -182,14 +179,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final pronom = Pronom.dirty(state.email.value);
     emit(state.copyWith(
       pronom: pronom,
-      status: Formz.validate([
-        pronom,
-        state.email,
-        state.name,
-        state.email,
-        state.position,
-        state.location
-      ]),
+      status: Formz.validate(
+          [pronom, state.email, state.name, state.position, state.location]),
     ));
   }
 
