@@ -3,7 +3,7 @@
 <div><strong>DE Placholder</strong></div>
 <div>&nbsp;</div>
 <div><span style="font-size: xx-small;">Volt Europa / Volt Deutschland</span></div>
-<div><span style="font-size: xx-small;"><a href="mailto:dominik.springer@volteuropa.org" target="_blank">dominik.springer@volteuropa.org</a></span></div>
+<div><span style="font-size: xx-small;"><a href="mailto:jean.placeholder@volteuropa.org" target="_blank">jean.placeholder@volteuropa.org</a></span></div>
 <div>&nbsp;</div>
 <p>
 <a href="https://www.voltdeutschland.org/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://www.voltdeutschland.org&amp;source=gmail&amp;ust=1638304144829000&amp;usg=AOvVaw2mhSgEBFv64g45-5CLT8Gl">
