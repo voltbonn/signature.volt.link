@@ -58,28 +58,62 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     return await rootBundle.loadString('assets/html/signature.txt');
   }
 
+  String checkSignature(String signature) {
+    if (state.name.value.isNotEmpty) {
+      signature.replaceFirst('Jean Placeholder', state.name.value);
+      print("Name:" + state.name.value);
+    }
+
+    if (state.email.value.isNotEmpty) {
+      signature.replaceFirst(
+          'jean.placeholder@volteuropa.org', state.email.value);
+    }
+    if (state.location.value.isNotEmpty) {
+      signature.replaceFirst(
+          'Volt Europa / Volt Deutschland', state.location.value);
+    }
+    if (state.position.value.isNotEmpty) {
+      signature.replaceFirst('DE Placholder', state.position.value);
+    }
+    return signature;
+  }
+
   Future<String> updateSignature(String value, FormField formField) async {
-    var htmlSignatureOrg = await loadSignature();
-    var htmlSignature = htmlSignatureOrg;
+    var htmlSignature = await loadSignature();
+
     switch (formField) {
       case FormField.name:
-        htmlSignature =
-            htmlSignatureOrg.replaceFirst('Jean Placeholder', value);
+        htmlSignature = htmlSignature.replaceFirst('Jean Placeholder', value);
         break;
       case FormField.email:
-        htmlSignature = htmlSignatureOrg.replaceFirst(
+        htmlSignature = htmlSignature.replaceFirst(
             'jean.placeholder@volteuropa.org', value);
         break;
       case FormField.location:
-        htmlSignature = htmlSignatureOrg.replaceFirst(
-            'Volt Europa / Volt Deutschland', value);
+        htmlSignature =
+            htmlSignature.replaceFirst('Volt Europa / Volt Deutschland', value);
         break;
       case FormField.position:
-        htmlSignature = htmlSignatureOrg.replaceFirst('DE Placholder', value);
+        htmlSignature = htmlSignature.replaceFirst('DE Placholder', value);
         break;
       default:
     }
-
+    if (state.name.value.isNotEmpty) {
+      htmlSignature =
+          htmlSignature.replaceFirst('Jean Placeholder', state.name.value);
+    }
+    if (state.email.value.isNotEmpty) {
+      htmlSignature = htmlSignature.replaceFirst(
+          'jean.placeholder@volteuropa.org', state.email.value);
+    }
+    if (state.location.value.isNotEmpty) {
+      htmlSignature = htmlSignature.replaceFirst(
+          'Volt Europa / Volt Deutschland', state.location.value);
+    }
+    if (state.position.value.isNotEmpty) {
+      htmlSignature =
+          htmlSignature.replaceFirst('DE Placholder', state.position.value);
+    }
     return htmlSignature;
   }
 
@@ -109,7 +143,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onNameChanged(NameChanged event, Emitter<SignatureState> emit) async {
     final name = Name.dirty(event.name);
-    final htmlSignature = await updateSignature(name.value, FormField.name);
+    var htmlSignature = await updateSignature(name.value, FormField.name);
+
     emit(state.copyWith(
       name: name.valid ? name : Name.pure(event.name),
       htmlSignature: htmlSignature,
@@ -120,8 +155,10 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onEmailChanged(EmailChanged event, Emitter<SignatureState> emit) async {
     final email = Email.dirty(event.email);
+    final htmlSignature = await updateSignature(email.value, FormField.email);
     emit(state.copyWith(
       email: email.valid ? email : Email.pure(event.email),
+      htmlSignature: htmlSignature,
       status:
           Formz.validate([email, state.name, state.location, state.position]),
     ));
@@ -174,7 +211,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   }
 
   void _onNameUnfocused(NameUnfocused event, Emitter<SignatureState> emit) {
-    final name = Name.dirty(state.email.value);
+    final name = Name.dirty(state.name.value);
     emit(state.copyWith(
       name: name,
       status:
@@ -206,17 +243,13 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final position = Position.dirty(state.position.value);
     emit(state.copyWith(
       position: position,
-      status: Formz.validate([
-        position,
-        state.email,
-        state.name,
-        state.location,
-      ]),
+      status:
+          Formz.validate([position, state.email, state.name, state.location]),
     ));
   }
 
   void _onPronomUnfocused(PronomUnfocused event, Emitter<SignatureState> emit) {
-    final pronom = Pronom.dirty(state.email.value);
+    final pronom = Pronom.dirty(state.pronom.value);
     emit(state.copyWith(
       pronom: pronom,
       status: Formz.validate(
