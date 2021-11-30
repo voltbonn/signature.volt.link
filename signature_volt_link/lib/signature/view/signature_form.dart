@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/signature.dart';
 
 class SignatureForm extends StatelessWidget {
@@ -25,6 +26,7 @@ class SignatureForm extends StatelessWidget {
       widthDesktopForm = MediaQuery.of(context).size.width * 0.40;
     }
     var defaultHeightSizedBox = 15.0;
+    final l10n = context.l10n;
 
     return BlocBuilder<SignatureBloc, SignatureState>(
       builder: (context, state) {
@@ -47,7 +49,7 @@ class SignatureForm extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                     child: Text(
-                      "Deine Daten.",
+                      l10n.formHeadline,
                       style: Theme.of(context).textTheme.headline2,
                     ),
                   ),
@@ -55,14 +57,11 @@ class SignatureForm extends StatelessWidget {
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
-                const Text(
-                    "Lorem ipsum whatever, text description must be longer"),
+                Text(l10n.formDescription),
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
-                const Text(
-                  "Enter your name:",
-                ),
+                Text(l10n.formNameText),
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
@@ -73,7 +72,7 @@ class SignatureForm extends StatelessWidget {
                       focusNode: focusNodeName,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Jean Placeholder',
+                        hintText: l10n.formNamePlaceholder,
                         errorText: state.name.invalid
                             ? '''Please enter your name.'''
                             : null,
@@ -90,9 +89,7 @@ class SignatureForm extends StatelessWidget {
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
-                const Text(
-                  "Enter your mail:",
-                ),
+                Text(l10n.formMailText),
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
@@ -107,7 +104,7 @@ class SignatureForm extends StatelessWidget {
                             ? '''Mail must be valid.'''
                             : null,
                         helperMaxLines: 2,
-                        hintText: 'jean.placeholder@volteurope.org',
+                        hintText: l10n.formMailPlaceholder,
                       ),
                       onChanged: (value) {
                         context
@@ -121,9 +118,7 @@ class SignatureForm extends StatelessWidget {
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
-                const Text(
-                  "Enter your location:",
-                ),
+                Text(l10n.formLocationText),
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
@@ -134,7 +129,7 @@ class SignatureForm extends StatelessWidget {
                       focusNode: focusNodeLocation,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Germany',
+                        hintText: l10n.formLocationPlaceholder,
                         errorText: state.location.invalid
                             ? '''Please enter your name.'''
                             : null,
@@ -151,9 +146,7 @@ class SignatureForm extends StatelessWidget {
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
-                const Text(
-                  "Enter your position:",
-                ),
+                Text(l10n.formPositionText),
                 const SizedBox(height: 2),
                 Container(
                   color: Colors.white,
@@ -164,7 +157,7 @@ class SignatureForm extends StatelessWidget {
                       focusNode: focusNodePosition,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Lead Placeholder',
+                        hintText: l10n.formPositionPlaceholder,
                         errorText: state.position.invalid
                             ? '''Please enter your name.'''
                             : null,

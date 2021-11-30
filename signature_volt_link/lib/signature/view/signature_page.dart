@@ -159,7 +159,7 @@ class _SignatureState extends State<Signature> {
                       children: [
                         TextButton(
                           child: Text(
-                            "Impressum",
+                            l10n.imprintText,
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           onPressed: () => context
@@ -170,7 +170,7 @@ class _SignatureState extends State<Signature> {
                         footerDivider(context),
                         TextButton(
                           child: Text(
-                            "Datenschutz",
+                            l10n.privacyText,
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           onPressed: () => context
@@ -181,7 +181,7 @@ class _SignatureState extends State<Signature> {
                         footerDivider(context),
                         TextButton(
                           child: Text(
-                            "Quellcode",
+                            l10n.sourcecodeText,
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           onPressed: () => context.read<SignatureBloc>().launchURL(
@@ -190,7 +190,7 @@ class _SignatureState extends State<Signature> {
                         footerDivider(context),
                         TextButton(
                           child: Text(
-                            "Kontakt",
+                            l10n.contactText,
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           onPressed: () => context

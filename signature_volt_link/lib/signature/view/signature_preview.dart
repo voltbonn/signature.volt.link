@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:formz/formz.dart';
 import 'package:signature_volt_link/config/volt_color.dart';
+import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/signature.dart';
 
 class SignaturePreview extends StatelessWidget {
@@ -22,6 +23,7 @@ class SignaturePreview extends StatelessWidget {
       widthDesktopPreview = MediaQuery.of(context).size.width * 0.50;
     }
     var defaultHeightSizedBox = 15.0;
+    final l10n = context.l10n;
     // TODO: Duplicated with signature_bloc
     Path drawStar(Size size) {
       // Method to convert degree to radians
@@ -82,7 +84,7 @@ class SignaturePreview extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                     child: Text(
-                      "Dein Ding.",
+                      l10n.previewHeadline,
                       style: Theme.of(context).textTheme.headline2,
                     ),
                   ),
@@ -90,10 +92,7 @@ class SignaturePreview extends StatelessWidget {
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
-                const Text(
-                  "Lorem ipsum whatever, text description must be longer",
-                  style: TextStyle(color: Colors.white),
-                ),
+                Text(l10n.previewDescription),
                 SizedBox(
                   height: defaultHeightSizedBox,
                 ),
@@ -156,9 +155,9 @@ class SignaturePreview extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text("An: volt@volteuropa.org"),
-                            Text("Betreff: Meine neue Volt Signatur"),
+                          children: [
+                            Text(l10n.previewFromText),
+                            Text(l10n.previewSubjectText),
                           ],
                         ),
                       ),
@@ -192,7 +191,7 @@ class SignaturePreview extends StatelessWidget {
                         ? () =>
                             context.read<SignatureBloc>().add(FormSubmitted())
                         : null,
-                    child: const Text('Mail Signatur kopieren'),
+                    child: Text(l10n.copyMailSignatureButtonText),
                   ),
                 ),
                 const SizedBox(height: 100),
