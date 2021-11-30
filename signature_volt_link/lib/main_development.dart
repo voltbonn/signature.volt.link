@@ -9,12 +9,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
-import 'package:bloc/bloc.dart';
 import 'package:signature_volt_link/app/app.dart';
-import 'package:signature_volt_link/app/app_bloc_observer.dart';
 
 void main() {
-  Bloc.observer = AppBlocObserver();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
