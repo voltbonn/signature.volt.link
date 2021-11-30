@@ -202,6 +202,7 @@ class _SignatureState extends State<Signature> {
                     ),
                   ),
                 ),
+                const Text("Made with 💜 by Dominik Springer 🇪🇺"),
               ],
             ),
           ),
