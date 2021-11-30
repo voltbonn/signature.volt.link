@@ -24,30 +24,6 @@ class SignaturePreview extends StatelessWidget {
     }
     var defaultHeightSizedBox = 15.0;
     final l10n = context.l10n;
-    // TODO: Duplicated with signature_bloc
-    Path drawStar(Size size) {
-      // Method to convert degree to radians
-      double degToRad(double deg) => deg * (pi / 180.0);
-
-      const numberOfPoints = 5;
-      final halfWidth = size.width / 2;
-      final externalRadius = halfWidth;
-      final internalRadius = halfWidth / 2.5;
-      final degreesPerStep = degToRad(360 / numberOfPoints);
-      final halfDegreesPerStep = degreesPerStep / 2;
-      final path = Path();
-      final fullAngle = degToRad(360);
-      path.moveTo(size.width, halfWidth);
-
-      for (double step = 0; step < fullAngle; step += degreesPerStep) {
-        path.lineTo(halfWidth + externalRadius * cos(step),
-            halfWidth + externalRadius * sin(step));
-        path.lineTo(halfWidth + internalRadius * cos(step + halfDegreesPerStep),
-            halfWidth + internalRadius * sin(step + halfDegreesPerStep));
-      }
-      path.close();
-      return path;
-    }
 
     return BlocBuilder<SignatureBloc, SignatureState>(
       buildWhen: (previous, current) =>
@@ -76,7 +52,7 @@ class SignaturePreview extends StatelessWidget {
                       VoltColor.red,
                       VoltColor.yellow
                     ],
-                    createParticlePath: drawStar,
+                    createParticlePath: context.read<SignatureBloc>().drawStar,
                   ),
                 ),
                 Container(
