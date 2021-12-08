@@ -69,8 +69,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
           'jean.placeholder@volteuropa.org', state.email.value);
     }
     if (state.location.value.isNotEmpty) {
-      signature.replaceFirst(
-          'Volt Europa / Volt Deutschland', state.location.value);
+      signature.replaceFirst('Volt Deutschland', state.location.value);
     }
     if (state.position.value.isNotEmpty) {
       signature.replaceFirst('DE Placholder', state.position.value);
@@ -90,8 +89,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
             'jean.placeholder@volteuropa.org', value);
         break;
       case FormField.location:
-        htmlSignature =
-            htmlSignature.replaceFirst('Volt Europa / Volt Deutschland', value);
+        htmlSignature = htmlSignature.replaceFirst('Volt Deutschland', value);
         break;
       case FormField.position:
         htmlSignature = htmlSignature.replaceFirst('DE Placholder', value);
@@ -107,8 +105,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
           'jean.placeholder@volteuropa.org', state.email.value);
     }
     if (state.location.value.isNotEmpty) {
-      htmlSignature = htmlSignature.replaceFirst(
-          'Volt Europa / Volt Deutschland', state.location.value);
+      htmlSignature =
+          htmlSignature.replaceFirst('Volt Deutschland', state.location.value);
     }
     if (state.position.value.isNotEmpty) {
       htmlSignature =
