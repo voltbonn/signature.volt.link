@@ -167,7 +167,10 @@ class SignaturePreview extends StatelessWidget {
                         ? () =>
                             context.read<SignatureBloc>().add(FormSubmitted())
                         : null,
-                    child: Text(l10n.copyMailSignatureButtonText),
+                    child: Text(
+                      l10n.copyMailSignatureButtonText,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 100),
