@@ -32,7 +32,7 @@ jobs:
       - run: flutter packages get
       - run: flutter pub get
       # - run: flutter test
-      - run: flutter build web --target lib/main_production.dart --web-renderer html
+      - run: flutter build web --target lib/main_production.dart
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@3.1.0
         env:
