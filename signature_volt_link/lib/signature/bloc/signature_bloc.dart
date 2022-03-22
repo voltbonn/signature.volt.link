@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:ui';
 import 'package:bloc/bloc.dart';
 import 'package:confetti/confetti.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:formz/formz.dart';
+import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:signature_volt_link/signature/models/models.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/services.dart'
-    show Clipboard, ClipboardData, rootBundle;
 
 part 'signature_event.dart';
 part 'signature_state.dart';
@@ -43,6 +42,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   var confettiController =
       ConfettiController(duration: const Duration(milliseconds: 500));
+  var htmlEditorController = HtmlEditorController();
 
   void launchURL(url) async =>
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
@@ -142,6 +142,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   void _onNameChanged(NameChanged event, Emitter<SignatureState> emit) async {
     final name = Name.dirty(event.name);
     var htmlSignature = await updateSignature(name.value, FormField.name);
+    updateHtmlEditor(htmlSignature);
 
     emit(state.copyWith(
       name: name.valid ? name : Name.pure(event.name),
@@ -154,6 +155,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   void _onEmailChanged(EmailChanged event, Emitter<SignatureState> emit) async {
     final email = Email.dirty(event.email);
     final htmlSignature = await updateSignature(email.value, FormField.email);
+    updateHtmlEditor(htmlSignature);
+
     emit(state.copyWith(
       email: email.valid ? email : Email.pure(event.email),
       htmlSignature: htmlSignature,
@@ -167,6 +170,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final location = Location.dirty(event.location);
     final htmlSignature =
         await updateSignature(location.value, FormField.location);
+    updateHtmlEditor(htmlSignature);
+
     emit(state.copyWith(
       location: location.valid ? location : Location.pure(event.location),
       htmlSignature: htmlSignature,
@@ -180,6 +185,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     final position = Position.dirty(event.position);
     final htmlSignature =
         await updateSignature(position.value, FormField.position);
+    updateHtmlEditor(htmlSignature);
+
     emit(state.copyWith(
       position: position.valid ? position : Position.pure(event.position),
       htmlSignature: htmlSignature,
@@ -194,6 +201,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onPronomChanged(PronomChanged event, Emitter<SignatureState> emit) {
     final pronom = Pronom.dirty(event.pronom);
+
     emit(state.copyWith(
       pronom: pronom.valid ? pronom : Pronom.pure(event.pronom),
       status: Formz.validate([
@@ -210,6 +218,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onNameUnfocused(NameUnfocused event, Emitter<SignatureState> emit) {
     final name = Name.dirty(state.name.value);
+
     emit(state.copyWith(
       name: name,
       status:
@@ -274,6 +283,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   void _onLoadHtmlSignature(
       LoadHtmlSignature event, Emitter<SignatureState> emit) async {
     final htmlSignature = await loadSignature();
+
     emit(state.copyWith(
       htmlSignature: htmlSignature,
     ));
@@ -281,6 +291,12 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onCopyMailSignature(
       CopyMailSignature event, Emitter<SignatureState> emit) async {
-    await Clipboard.setData(ClipboardData(text: state.htmlSignature));
+    print("Copy");
+  }
+
+  void updateHtmlEditor(String html) {
+    htmlEditorController.disable();
+    htmlEditorController.clear();
+    htmlEditorController.insertHtml(html);
   }
 }

@@ -131,7 +131,7 @@ class SignatureForm extends StatelessWidget {
                         border: InputBorder.none,
                         hintText: l10n.formLocationPlaceholder,
                         errorText: state.location.invalid
-                            ? '''Please enter your name.'''
+                            ? '''Please enter your location.'''
                             : null,
                       ),
                       onChanged: (value) {
@@ -159,7 +159,7 @@ class SignatureForm extends StatelessWidget {
                         border: InputBorder.none,
                         hintText: l10n.formPositionPlaceholder,
                         errorText: state.position.invalid
-                            ? '''Please enter your name.'''
+                            ? '''Please enter your position.'''
                             : null,
                       ),
                       onChanged: (value) {

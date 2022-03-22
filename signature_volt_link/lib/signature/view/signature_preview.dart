@@ -2,10 +2,9 @@ import 'dart:math';
 
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:formz/formz.dart';
+import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:signature_volt_link/config/volt_color.dart';
 import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/signature.dart';
@@ -150,8 +149,13 @@ class SignaturePreview extends StatelessWidget {
                               color: const Color.fromARGB(255, 51, 71, 91))),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: HtmlWidget(
-                          state.htmlSignature,
+                        child: HtmlEditor(
+                          controller: context
+                              .read<SignatureBloc>()
+                              .htmlEditorController,
+                          htmlEditorOptions: HtmlEditorOptions(
+                            initialText: state.htmlSignature,
+                          ),
                         ),
                       ),
                     ),

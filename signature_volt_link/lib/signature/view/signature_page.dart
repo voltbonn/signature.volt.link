@@ -13,7 +13,9 @@ import 'package:signature_volt_link/config/volt_color.dart';
 import 'package:signature_volt_link/signature/signature.dart';
 import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/view/signature_form.dart';
+import 'package:signature_volt_link/signature/view/signature_help.dart';
 import 'package:signature_volt_link/signature/view/signature_preview.dart';
+import 'package:signature_volt_link/signature/view/signature_yt.dart';
 
 class SignaturePage extends StatelessWidget {
   const SignaturePage({Key? key}) : super(key: key);
@@ -46,34 +48,34 @@ class _SignatureState extends State<Signature> {
   @override
   void initState() {
     super.initState();
-    _nameFocusNode.addListener(() {
-      if (!_nameFocusNode.hasFocus) {
-        context.read<SignatureBloc>().add(NameUnfocused());
-        FocusScope.of(context).requestFocus(_emailFocusNode);
-      }
-    });
-    _emailFocusNode.addListener(() {
-      if (!_emailFocusNode.hasFocus) {
-        context.read<SignatureBloc>().add(EmailUnfocused());
-        FocusScope.of(context).requestFocus(_locationFocusNode);
-      }
-    });
-    _locationFocusNode.addListener(() {
-      if (!_locationFocusNode.hasFocus) {
-        context.read<SignatureBloc>().add(LocationUnfocused());
-        FocusScope.of(context).requestFocus(_positionFocusNode);
-      }
-    });
-    _positionFocusNode.addListener(() {
-      if (!_positionFocusNode.hasFocus) {
-        context.read<SignatureBloc>().add(PositionUnfocused());
-      }
-    });
-    _pronomFocusNode.addListener(() {
-      if (!_pronomFocusNode.hasFocus) {
-        context.read<SignatureBloc>().add(PronomUnfocused());
-      }
-    });
+    // _nameFocusNode.addListener(() {
+    //   if (!_nameFocusNode.hasFocus) {
+    //     context.read<SignatureBloc>().add(NameUnfocused());
+    //     FocusScope.of(context).requestFocus(_emailFocusNode);
+    //   }
+    // });
+    // _emailFocusNode.addListener(() {
+    //   if (!_emailFocusNode.hasFocus) {
+    //     context.read<SignatureBloc>().add(EmailUnfocused());
+    //     FocusScope.of(context).requestFocus(_locationFocusNode);
+    //   }
+    // });
+    // _locationFocusNode.addListener(() {
+    //   if (!_locationFocusNode.hasFocus) {
+    //     context.read<SignatureBloc>().add(LocationUnfocused());
+    //     FocusScope.of(context).requestFocus(_positionFocusNode);
+    //   }
+    // });
+    // _positionFocusNode.addListener(() {
+    //   if (!_positionFocusNode.hasFocus) {
+    //     context.read<SignatureBloc>().add(PositionUnfocused());
+    //   }
+    // });
+    // _pronomFocusNode.addListener(() {
+    //   if (!_pronomFocusNode.hasFocus) {
+    //     context.read<SignatureBloc>().add(PronomUnfocused());
+    //   }
+    // });
 
     context.read<SignatureBloc>().add(LoadHtmlSignature());
   }
@@ -96,6 +98,10 @@ class _SignatureState extends State<Signature> {
         if (state.status.isSubmissionSuccess) {
           context.read<SignatureBloc>().add(CopyMailSignature());
           context.read<SignatureBloc>().confettiController.play();
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => YoutubeAppDemo()),
+          // );
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
