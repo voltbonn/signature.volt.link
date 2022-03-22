@@ -24,7 +24,7 @@ dependencies:
   url_launcher: ^6.0.20
   equatable: ^2.0.3
   formz: ^0.4.1
-  html_editor_enhanced: ^2.4.0
+  html_editor_enhanced: ^2.4.0+1
 
 dev_dependencies:
   flutter_test:
