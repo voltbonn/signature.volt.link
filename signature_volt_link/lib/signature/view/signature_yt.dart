@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class YoutubeAppDemo extends StatefulWidget {
+  const YoutubeAppDemo({Key? key}) : super(key: key);
+
   @override
   _YoutubeAppDemoState createState() => _YoutubeAppDemoState();
 }

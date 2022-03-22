@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class SignatureHelp extends StatelessWidget {
+  const SignatureHelp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var _controller = YoutubePlayerController(
@@ -34,7 +36,7 @@ class SignatureHelp extends StatelessWidget {
                   ),
                   Flexible(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
                         'Deine Mail Signatur!',
                         style: Theme.of(context).textTheme.headline2,

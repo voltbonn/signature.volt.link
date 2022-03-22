@@ -61,7 +61,6 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   String checkSignature(String signature) {
     if (state.name.value.isNotEmpty) {
       signature.replaceFirst('Jean Placeholder', state.name.value);
-      print("Name:" + state.name.value);
     }
 
     if (state.email.value.isNotEmpty) {
@@ -291,7 +290,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onCopyMailSignature(
       CopyMailSignature event, Emitter<SignatureState> emit) async {
-    print("Copy");
+    // TODO: Open guide to embed the signature
   }
 
   void updateHtmlEditor(String html) {
