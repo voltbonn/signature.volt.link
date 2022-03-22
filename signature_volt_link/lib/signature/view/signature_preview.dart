@@ -153,6 +153,11 @@ class SignaturePreview extends StatelessWidget {
                           controller: context
                               .read<SignatureBloc>()
                               .htmlEditorController,
+                          htmlToolbarOptions: const HtmlToolbarOptions(
+                              toolbarItemHeight: 0,
+                              defaultToolbarButtons: [
+                                StyleButtons(style: false),
+                              ]),
                           htmlEditorOptions: HtmlEditorOptions(
                             initialText: state.htmlSignature,
                           ),
