@@ -154,7 +154,7 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.4.0"
+    version: "4.5.1"
   flex_color_picker:
     dependency: transitive
     description:
@@ -269,9 +269,11 @@ packages:
   html_editor_enhanced:
     dependency: "direct main"
     description:
-      name: html_editor_enhanced
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "134d250c505b0e44f64d51eba5bef406e66e4c36"
+      url: "https://github.com/tneotia/html-editor-enhanced.git"
+    source: git
     version: "2.4.0+1"
   http_multi_server:
     dependency: transitive
@@ -670,6 +672,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  win32:
+    dependency: transitive
+    description:
+      name: win32
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.4.4"
   xml:
     dependency: transitive
     description:
@@ -692,5 +701,5 @@ packages:
     source: hosted
     version: "2.2.2"
 sdks:
-  dart: ">=2.14.0 <3.0.0"
+  dart: ">=2.15.0 <3.0.0"
   flutter: ">=2.10.0"
