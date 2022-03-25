@@ -15,11 +15,14 @@ class AppModule extends Module {
     ChildRoute<SignaturePage>(Modular.initialRoute,
         child: (_, __) => const SignaturePage()),
     ChildRoute<SignaturePage>(
-      '/:member_name/',
+      '/:member_name/:mail_address/:location/:position',
       transition: TransitionType.fadeIn,
       duration: const Duration(milliseconds: 500),
       child: (_, args) => SignaturePage(
         memberName: args.params['member_name'].toString(),
+        mailAddress: args.params['mail_address'].toString(),
+        location: args.params['location'].toString(),
+        position: args.params['position'].toString(),
       ),
     ),
   ];

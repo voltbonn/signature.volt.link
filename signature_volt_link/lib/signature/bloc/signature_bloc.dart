@@ -16,8 +16,15 @@ part 'signature_state.dart';
 enum FormField { name, email, location, position }
 
 class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
-  SignatureBloc([String? memberName])
+  SignatureBloc(
+      [String? memberName,
+      String? mailAddress,
+      String? location,
+      String? position])
       : _memberName = memberName,
+        _mailAddress = mailAddress,
+        _location = location,
+        _position = position,
         super(const SignatureState()) {
     on<NameChanged>(_onNameChanged);
     on<EmailChanged>(_onEmailChanged);
@@ -37,10 +44,14 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   }
 
   final String? _memberName;
-  final String defaultName = 'JeanPlaceholder';
+  final String? _mailAddress;
+  final String? _location;
+  final String? _position;
+
+  final String defaultName = 'Jean Placeholder';
   final String defaultMailAdress = 'jean.placeholder@volteuropa.org';
   final String defaultLocation = 'Deutschland';
-  final String defaultPosition = 'DE Placholder';
+  final String defaultPosition = 'DE Placeholder';
 
   @override
   void onTransition(Transition<SignatureEvent, SignatureState> transition) {
@@ -292,13 +303,30 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     memberNameString ??= defaultName;
     var memberName = Name.dirty(memberNameString);
 
+    var mailAddressString = _mailAddress;
+    mailAddressString ??= defaultMailAdress;
+    var mailAddress = Email.dirty(memberNameString);
+
+    var locationString = _location;
+    locationString ??= defaultLocation;
+    var location = Location.dirty(memberNameString);
+
+    var positionString = _position;
+    positionString ??= defaultPosition;
+    var position = Position.dirty(positionString);
+
     htmlSignature = await updateSignature(memberName.value, FormField.name);
+    htmlSignature = await updateSignature(mailAddress.value, FormField.email);
+    htmlSignature = await updateSignature(location.value, FormField.location);
+    htmlSignature = await updateSignature(position.value, FormField.position);
     updateHtmlEditor(htmlSignature);
 
     emit(state.copyWith(
       htmlSignature: htmlSignature,
       name: memberName,
-      status: Formz.validate([memberName]),
+      email: mailAddress,
+      location: location,
+      position: position,
     ));
   }
 
