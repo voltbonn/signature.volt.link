@@ -16,7 +16,9 @@ part 'signature_state.dart';
 enum FormField { name, email, location, position }
 
 class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
-  SignatureBloc() : super(const SignatureState()) {
+  SignatureBloc([String? memberName])
+      : _memberName = memberName,
+        super(const SignatureState()) {
     on<NameChanged>(_onNameChanged);
     on<EmailChanged>(_onEmailChanged);
     on<LocationChanged>(_onLocationChanged);
@@ -33,6 +35,12 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     on<LoadHtmlSignature>(_onLoadHtmlSignature);
     on<CopyMailSignature>(_onCopyMailSignature);
   }
+
+  final String? _memberName;
+  final String defaultName = 'JeanPlaceholder';
+  final String defaultMailAdress = 'jean.placeholder@volteuropa.org';
+  final String defaultLocation = 'Deutschland';
+  final String defaultPosition = 'DE Placholder';
 
   @override
   void onTransition(Transition<SignatureEvent, SignatureState> transition) {
@@ -60,18 +68,17 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   String checkSignature(String signature) {
     if (state.name.value.isNotEmpty) {
-      signature.replaceFirst('Jean Placeholder', state.name.value);
+      signature.replaceFirst(defaultName, state.name.value);
     }
 
     if (state.email.value.isNotEmpty) {
-      signature.replaceAll(
-          'jean.placeholder@volteuropa.org', state.email.value);
+      signature.replaceAll(defaultMailAdress, state.email.value);
     }
     if (state.location.value.isNotEmpty) {
-      signature.replaceFirst('Deutschland', state.location.value);
+      signature.replaceFirst(defaultLocation, state.location.value);
     }
     if (state.position.value.isNotEmpty) {
-      signature.replaceFirst('DE Placholder', state.position.value);
+      signature.replaceFirst(defaultPosition, state.position.value);
     }
     return signature;
   }
@@ -81,35 +88,33 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
     switch (formField) {
       case FormField.name:
-        htmlSignature = htmlSignature.replaceFirst('Jean Placeholder', value);
+        htmlSignature = htmlSignature.replaceFirst(defaultName, value);
         break;
       case FormField.email:
-        htmlSignature =
-            htmlSignature.replaceAll('jean.placeholder@volteuropa.org', value);
+        htmlSignature = htmlSignature.replaceAll(defaultMailAdress, value);
         break;
       case FormField.location:
-        htmlSignature = htmlSignature.replaceFirst('Deutschland', value);
+        htmlSignature = htmlSignature.replaceFirst(defaultLocation, value);
         break;
       case FormField.position:
-        htmlSignature = htmlSignature.replaceFirst('DE Placholder', value);
+        htmlSignature = htmlSignature.replaceFirst(defaultPosition, value);
         break;
       default:
     }
     if (state.name.value.isNotEmpty) {
-      htmlSignature =
-          htmlSignature.replaceFirst('Jean Placeholder', state.name.value);
+      htmlSignature = htmlSignature.replaceFirst(defaultName, state.name.value);
     }
     if (state.email.value.isNotEmpty) {
-      htmlSignature = htmlSignature.replaceAll(
-          'jean.placeholder@volteuropa.org', state.email.value);
+      htmlSignature =
+          htmlSignature.replaceAll(defaultMailAdress, state.email.value);
     }
     if (state.location.value.isNotEmpty) {
       htmlSignature =
-          htmlSignature.replaceFirst('Deutschland', state.location.value);
+          htmlSignature.replaceFirst(defaultLocation, state.location.value);
     }
     if (state.position.value.isNotEmpty) {
       htmlSignature =
-          htmlSignature.replaceFirst('DE Placholder', state.position.value);
+          htmlSignature.replaceFirst(defaultPosition, state.position.value);
     }
     return htmlSignature;
   }
@@ -281,10 +286,19 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onLoadHtmlSignature(
       LoadHtmlSignature event, Emitter<SignatureState> emit) async {
-    final htmlSignature = await loadSignature();
+    var htmlSignature = await loadSignature();
+
+    var memberNameString = _memberName;
+    memberNameString ??= defaultName;
+    var memberName = Name.dirty(memberNameString);
+
+    htmlSignature = await updateSignature(memberName.value, FormField.name);
+    updateHtmlEditor(htmlSignature);
 
     emit(state.copyWith(
       htmlSignature: htmlSignature,
+      name: memberName,
+      status: Formz.validate([memberName]),
     ));
   }
 

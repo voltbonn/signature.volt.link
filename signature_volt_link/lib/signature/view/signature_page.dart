@@ -16,13 +16,17 @@ import 'package:signature_volt_link/signature/view/signature_form.dart';
 import 'package:signature_volt_link/signature/view/signature_preview.dart';
 
 class SignaturePage extends StatelessWidget {
-  const SignaturePage({Key? key}) : super(key: key);
+  const SignaturePage({Key? key, String? memberName})
+      : _memberName = memberName,
+        super(key: key);
+
+  final String? _memberName;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (_) => SignatureBloc(),
+        create: (_) => SignatureBloc(_memberName),
         child: const Signature(),
       ),
     );
