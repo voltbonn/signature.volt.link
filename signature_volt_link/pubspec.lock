@@ -269,11 +269,9 @@ packages:
   html_editor_enhanced:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "134d250c505b0e44f64d51eba5bef406e66e4c36"
-      url: "https://github.com/tneotia/html-editor-enhanced.git"
-    source: git
+      name: html_editor_enhanced
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "2.4.0+1"
   http_multi_server:
     dependency: transitive
