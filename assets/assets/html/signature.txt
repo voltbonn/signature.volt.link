@@ -1,6 +1,6 @@
 
   <p><strong>Jean Placeholder</strong></p>
-<div><strong>DE Placholder</strong></div>
+<div><strong>DE Placeholder</strong></div>
 <div>&nbsp;</div>
 <div><span style="font-size: xx-small;">Volt Europa / Volt Deutschland</span></div>
 <div><span style="font-size: xx-small;"><a href="mailto:jean.placeholder@volteuropa.org" target="_blank">jean.placeholder@volteuropa.org</a></span></div>
