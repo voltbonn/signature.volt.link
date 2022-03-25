@@ -139,6 +139,7 @@ class SignaturePreview extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
+                          color: Colors.white,
                           borderRadius: const BorderRadius.only(
                               topRight: Radius.circular(0.0),
                               bottomRight: Radius.circular(10.0),
@@ -153,11 +154,11 @@ class SignaturePreview extends StatelessWidget {
                           controller: context
                               .read<SignatureBloc>()
                               .htmlEditorController,
-                          // htmlToolbarOptions: const HtmlToolbarOptions(
-                          //     toolbarItemHeight: 0,
-                          //     defaultToolbarButtons: [
-                          //       StyleButtons(style: false),
-                          //     ]),
+                          htmlToolbarOptions: const HtmlToolbarOptions(
+                              toolbarItemHeight: 0,
+                              defaultToolbarButtons: [
+                                StyleButtons(style: false),
+                              ]),
                           htmlEditorOptions: HtmlEditorOptions(
                             initialText: state.htmlSignature,
                           ),
