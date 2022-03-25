@@ -64,11 +64,11 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     }
 
     if (state.email.value.isNotEmpty) {
-      signature.replaceFirst(
+      signature.replaceAll(
           'jean.placeholder@volteuropa.org', state.email.value);
     }
     if (state.location.value.isNotEmpty) {
-      signature.replaceFirst('Volt Deutschland', state.location.value);
+      signature.replaceFirst('Deutschland', state.location.value);
     }
     if (state.position.value.isNotEmpty) {
       signature.replaceFirst('DE Placholder', state.position.value);
@@ -84,11 +84,11 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
         htmlSignature = htmlSignature.replaceFirst('Jean Placeholder', value);
         break;
       case FormField.email:
-        htmlSignature = htmlSignature.replaceFirst(
-            'jean.placeholder@volteuropa.org', value);
+        htmlSignature =
+            htmlSignature.replaceAll('jean.placeholder@volteuropa.org', value);
         break;
       case FormField.location:
-        htmlSignature = htmlSignature.replaceFirst('Volt Deutschland', value);
+        htmlSignature = htmlSignature.replaceFirst('Deutschland', value);
         break;
       case FormField.position:
         htmlSignature = htmlSignature.replaceFirst('DE Placholder', value);
@@ -100,12 +100,12 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
           htmlSignature.replaceFirst('Jean Placeholder', state.name.value);
     }
     if (state.email.value.isNotEmpty) {
-      htmlSignature = htmlSignature.replaceFirst(
+      htmlSignature = htmlSignature.replaceAll(
           'jean.placeholder@volteuropa.org', state.email.value);
     }
     if (state.location.value.isNotEmpty) {
       htmlSignature =
-          htmlSignature.replaceFirst('Volt Deutschland', state.location.value);
+          htmlSignature.replaceFirst('Deutschland', state.location.value);
     }
     if (state.position.value.isNotEmpty) {
       htmlSignature =
@@ -140,7 +140,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
   void _onNameChanged(NameChanged event, Emitter<SignatureState> emit) async {
     final name = Name.dirty(event.name);
-    var htmlSignature = await updateSignature(name.value, FormField.name);
+    final htmlSignature = await updateSignature(name.value, FormField.name);
     updateHtmlEditor(htmlSignature);
 
     emit(state.copyWith(
