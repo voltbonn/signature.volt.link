@@ -7,8 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:signature_volt_link/signature/signature.dart';
 import 'package:signature_volt_link/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: ThemeData(
           fontFamily: 'Ubuntu',
           primaryColor: const Color.fromARGB(255, 88, 43, 131),
@@ -73,10 +73,10 @@ class App extends StatelessWidget {
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      navigatorObservers: [FlutterSmartDialog.observer],
       builder: FlutterSmartDialog.init(),
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const SignaturePage(),
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
     );
   }
 }

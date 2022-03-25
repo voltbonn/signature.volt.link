@@ -9,7 +9,10 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:signature_volt_link/app/app.dart';
+
+import 'app/app_module.dart';
 
 void main() {
   FlutterError.onError = (details) {
@@ -17,7 +20,7 @@ void main() {
   };
 
   runZonedGuarded(
-    () => runApp(const App()),
+    () => runApp(ModularApp(module: AppModule(), child: const App())),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
