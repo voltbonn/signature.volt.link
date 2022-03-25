@@ -301,38 +301,51 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
 
     var memberNameString = _memberName;
     memberNameString ??= defaultName;
+    memberNameString = updateBlankString(memberNameString);
     var memberName = Name.dirty(memberNameString);
 
     var mailAddressString = _mailAddress;
     mailAddressString ??= defaultMailAdress;
-    var mailAddress = Email.dirty(memberNameString);
+    mailAddressString = updateBlankString(mailAddressString);
+    var mailAddress = Email.dirty(mailAddressString);
 
     var locationString = _location;
     locationString ??= defaultLocation;
-    var location = Location.dirty(memberNameString);
+    locationString = updateBlankString(locationString);
+    var location = Location.dirty(locationString);
 
     var positionString = _position;
     positionString ??= defaultPosition;
+    positionString = updateBlankString(positionString);
     var position = Position.dirty(positionString);
 
     htmlSignature = await updateSignature(memberName.value, FormField.name);
-    htmlSignature = await updateSignature(mailAddress.value, FormField.email);
-    htmlSignature = await updateSignature(location.value, FormField.location);
-    htmlSignature = await updateSignature(position.value, FormField.position);
+    emit(state.copyWith(name: memberName, htmlSignature: htmlSignature));
     updateHtmlEditor(htmlSignature);
 
-    emit(state.copyWith(
-      htmlSignature: htmlSignature,
-      name: memberName,
-      email: mailAddress,
-      location: location,
-      position: position,
-    ));
+    htmlSignature = await updateSignature(mailAddress.value, FormField.email);
+    emit(state.copyWith(email: mailAddress, htmlSignature: htmlSignature));
+    updateHtmlEditor(htmlSignature);
+
+    htmlSignature = await updateSignature(location.value, FormField.location);
+    emit(state.copyWith(location: location, htmlSignature: htmlSignature));
+    updateHtmlEditor(htmlSignature);
+
+    htmlSignature = await updateSignature(position.value, FormField.position);
+    emit(state.copyWith(position: position, htmlSignature: htmlSignature));
+    updateHtmlEditor(htmlSignature);
   }
 
   void _onCopyMailSignature(
       CopyMailSignature event, Emitter<SignatureState> emit) async {
     // TODO: Open guide to embed the signature
+  }
+
+  String updateBlankString(String text) {
+    if (text.contains('%20')) {
+      text = text.replaceAll('%20', ' ');
+    }
+    return text;
   }
 
   void updateHtmlEditor(String html) {
