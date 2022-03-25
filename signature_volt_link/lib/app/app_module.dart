@@ -14,5 +14,13 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute<SignaturePage>(Modular.initialRoute,
         child: (_, __) => const SignaturePage()),
+    ChildRoute<SignaturePage>(
+      '/:member_name/',
+      transition: TransitionType.fadeIn,
+      duration: const Duration(milliseconds: 500),
+      child: (_, args) => SignaturePage(
+        memberName: args.params['member_name'].toString(),
+      ),
+    ),
   ];
 }
