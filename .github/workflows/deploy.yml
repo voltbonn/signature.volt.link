@@ -30,7 +30,6 @@ jobs:
         with:
           channel: 'stable'
           flutter-version: '2.10.3'
-      - run: flutter packages get
       - run: flutter pub get
       # - run: flutter test
       - run: flutter build web --target lib/main_production.dart
