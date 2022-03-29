@@ -71,7 +71,7 @@ class SignatureForm extends StatelessWidget {
                       focusNode: focusNodeName,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: l10n.formNamePlaceholder,
+                        hintText: state.name.value,
                         errorText: state.name.invalid
                             ? '''Please enter your name.'''
                             : null,
@@ -103,7 +103,7 @@ class SignatureForm extends StatelessWidget {
                             ? '''Mail must be valid.'''
                             : null,
                         helperMaxLines: 2,
-                        hintText: l10n.formMailPlaceholder,
+                        hintText: state.email.value,
                       ),
                       onChanged: (value) {
                         context
@@ -128,7 +128,7 @@ class SignatureForm extends StatelessWidget {
                       focusNode: focusNodeLocation,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: l10n.formLocationPlaceholder,
+                        hintText: state.location.value,
                         errorText: state.location.invalid
                             ? '''Please enter your location.'''
                             : null,
@@ -156,7 +156,7 @@ class SignatureForm extends StatelessWidget {
                       focusNode: focusNodePosition,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: l10n.formPositionPlaceholder,
+                        hintText: state.position.value,
                         errorText: state.position.invalid
                             ? '''Please enter your position.'''
                             : null,
