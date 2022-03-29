@@ -142,7 +142,8 @@ class _SignatureState extends State<Signature> {
               children: [
                 Padding(
                     padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: SvgPicture.asset('images/volt_logo_purple.svg')),
+                    child: SvgPicture.network(
+                        'https://signature.volt.link/assets/assets/images/volt_logo_purple.svg')),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                   child: Text(
