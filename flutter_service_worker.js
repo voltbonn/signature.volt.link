@@ -3,9 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "main.dart.js": "78c54a8e876cf641003478243db63e34",
-"index.html": "80667335bbf4ebdaa0803d4c78c1fd06",
-"/": "80667335bbf4ebdaa0803d4c78c1fd06",
+  "main.dart.js": "1c8afc276e91e34d6c911db0f0d6ecb7",
+"index.html": "0c2b27598fe721a20234985deae115f5",
+"/": "0c2b27598fe721a20234985deae115f5",
 "Ubuntu-Bold.ttf": "e00e2a77dd88a8fe75573a5d993af76a",
 "favicon.png": "b98a2fc9e00a0baaa82cd9ef31d16ba3",
 "assets/fonts/MaterialIcons-Regular.otf": "7e7a6cccddf6d7b20012a548461d5d81",
@@ -29,7 +29,7 @@ const RESOURCES = {
 "assets/assets/fonts/Ubuntu-Bold.ttf": "e00e2a77dd88a8fe75573a5d993af76a",
 "assets/assets/images/volt_logo_purple.svg": "8fd76992f814ef2f7e6befaa63fbcf5e",
 "assets/assets/html/signature.txt": "768aa7584aafbbbd2d00963c67a37285",
-"assets/NOTICES": "b7e199ba5b28cae7d5c7074a299d32f5",
+"assets/NOTICES": "b9ab3ff15762f558a35bc45321afe638",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
