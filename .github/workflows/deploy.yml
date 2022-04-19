@@ -33,7 +33,7 @@ jobs:
       - run: flutter pub get
       - run: flutter doctor
       # - run: flutter test
-      - run: flutter build web --target lib/main_test.dart --base-href "/" --profile
+      - run: flutter build web --target lib/main_test.dart --base-href "/"
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@3.1.0
         env:
