@@ -17,9 +17,6 @@ dependencies:
   bloc: ^8.0.3
   flutter_bloc: ^8.0.1
   intl: ^0.17.0
-  youtube_player_iframe: ^2.2.2 
-  flutter_smart_dialog: ^3.4.0
-  confetti: ^0.6.0
   flutter_svg: ^1.0.3
   url_launcher: ^6.0.20
   equatable: ^2.0.3

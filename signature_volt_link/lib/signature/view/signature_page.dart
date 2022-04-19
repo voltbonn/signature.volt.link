@@ -111,7 +111,6 @@ class _SignatureState extends State<Signature> {
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
           context.read<SignatureBloc>().add(CopyMailSignature());
-          context.read<SignatureBloc>().confettiController.play();
           // Navigator.push(
           //   context,
           //   MaterialPageRoute(builder: (context) => YoutubeAppDemo()),
@@ -165,10 +164,7 @@ class _SignatureState extends State<Signature> {
                       focusNodePosition: _positionFocusNode,
                     ),
                     const SizedBox(width: 25),
-                    SignaturePreview(
-                      confettiController:
-                          context.read<SignatureBloc>().confettiController,
-                    ),
+                    const SignaturePreview(),
                   ],
                 ),
                 Padding(

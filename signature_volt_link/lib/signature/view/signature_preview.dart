@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -10,9 +7,7 @@ import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/signature.dart';
 
 class SignaturePreview extends StatelessWidget {
-  final ConfettiController confettiController;
-  const SignaturePreview({Key? key, required this.confettiController})
-      : super(key: key);
+  const SignaturePreview({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,25 +30,6 @@ class SignaturePreview extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: ConfettiWidget(
-                    confettiController: confettiController,
-                    blastDirection: pi / 3,
-                    maxBlastForce: 2, // set a lower max blast force
-                    minBlastForce: 1, // set a lower min blast force
-                    emissionFrequency: 0.05,
-                    numberOfParticles: 50, // a lot of particles at once
-                    gravity: 0.3,
-                    colors: const [
-                      VoltColor.blue,
-                      VoltColor.green,
-                      VoltColor.red,
-                      VoltColor.yellow
-                    ],
-                    createParticlePath: context.read<SignatureBloc>().drawStar,
-                  ),
-                ),
                 Container(
                   color: Colors.white,
                   child: Padding(

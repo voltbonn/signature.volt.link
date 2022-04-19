@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:signature_volt_link/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -73,7 +72,6 @@ class App extends StatelessWidget {
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      builder: FlutterSmartDialog.init(),
       supportedLocales: AppLocalizations.supportedLocales,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
