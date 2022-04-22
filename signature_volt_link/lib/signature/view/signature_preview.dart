@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 import 'package:formz/formz.dart';
-import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:signature_volt_link/config/volt_color.dart';
 import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/signature.dart';
