@@ -31,9 +31,8 @@ jobs:
           channel: 'stable'
           flutter-version: '2.10.5'
       - run: flutter pub get
-      - run: flutter doctor
       # - run: flutter test
-      - run: flutter build web --target lib/main_production.dart --base-href "/" --profile
+      - run: flutter build web --target lib/main_test.dart --[no-]source-maps        
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@3.1.0
         env:
