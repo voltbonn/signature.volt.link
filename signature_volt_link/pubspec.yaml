@@ -22,6 +22,7 @@ dependencies:
   equatable: ^2.0.3
   formz: ^0.4.1
   html_editor_enhanced: ^2.4.0
+  flutter_tex: ^4.0.3+4
   flutter_modular: ^4.5.1
 
 dev_dependencies:
