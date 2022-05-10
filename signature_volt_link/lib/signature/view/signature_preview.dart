@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 import 'package:formz/formz.dart';
+import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:signature_volt_link/config/volt_color.dart';
 import 'package:signature_volt_link/l10n/l10n.dart';
 import 'package:signature_volt_link/signature/signature.dart';
@@ -126,25 +127,26 @@ class SignaturePreview extends StatelessWidget {
                               color: const Color.fromARGB(255, 51, 71, 91))),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: TeXView(
-                          child: TeXViewInkWell(
-                            id: "id_0",
-                            rippleEffect: true,
-                            child: TeXViewDocument(state.htmlSignature),
-                          ),
-                        ), // child: HtmlEditor(
-                        //   controller: context
-                        //       .read<SignatureBloc>()
-                        //       .htmlEditorController,
-                        //   htmlToolbarOptions: const HtmlToolbarOptions(
-                        //       toolbarItemHeight: 0,
-                        //       defaultToolbarButtons: [
-                        //         StyleButtons(style: false),
-                        //       ]),
-                        //   htmlEditorOptions: HtmlEditorOptions(
-                        //     initialText: state.htmlSignature,
+                        // child: TeXView(
+                        //   child: TeXViewInkWell(
+                        //     id: "id_0",
+                        //     rippleEffect: true,
+                        //     child: TeXViewDocument(state.htmlSignature),
                         //   ),
-                        // ),
+                        //),
+                        child: HtmlEditor(
+                          controller: context
+                              .read<SignatureBloc>()
+                              .htmlEditorController,
+                          htmlToolbarOptions: const HtmlToolbarOptions(
+                              toolbarItemHeight: 0,
+                              defaultToolbarButtons: [
+                                StyleButtons(style: false),
+                              ]),
+                          htmlEditorOptions: HtmlEditorOptions(
+                            initialText: state.htmlSignature,
+                          ),
+                        ),
                       ),
                     ),
                   ],

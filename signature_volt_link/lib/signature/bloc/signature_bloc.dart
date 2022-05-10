@@ -324,5 +324,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     htmlEditorController.disable();
     htmlEditorController.clear();
     htmlEditorController.insertHtml(html);
+    htmlEditorController.reloadWeb();
+    htmlEditorController.enable();
   }
 }
