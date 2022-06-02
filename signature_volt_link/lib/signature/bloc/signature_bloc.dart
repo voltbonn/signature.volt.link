@@ -323,8 +323,8 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   void updateHtmlEditor(String html) {
     // htmlEditorController.disable();
     // htmlEditorController.clear();
-    // htmlEditorController.insertHtml(html);
-    // htmlEditorController.reloadWeb();
+    htmlEditorController.insertHtml(html);
+    htmlEditorController.reloadWeb();
     // htmlEditorController.enable();
   }
 }
