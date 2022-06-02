@@ -9,6 +9,7 @@ class SignatureState extends Equatable {
     this.pronom = const Pronom.pure(),
     this.htmlSignature = "",
     this.status = FormzStatus.pure,
+    required this.htmlEditorController,
   });
 
   final Name name;
@@ -18,6 +19,7 @@ class SignatureState extends Equatable {
   final Pronom pronom; // TODO: String to enum
   final String htmlSignature;
   final FormzStatus status;
+  final HtmlEditorController htmlEditorController;
 
   SignatureState copyWith({
     Name? name,
@@ -27,18 +29,21 @@ class SignatureState extends Equatable {
     Pronom? pronom,
     String? htmlSignature,
     FormzStatus? status,
+    HtmlEditorController? htmlEditorController,
   }) {
     return SignatureState(
-      name: name ?? this.name,
-      email: email ?? this.email,
-      location: location ?? this.location,
-      position: position ?? this.position,
-      pronom: pronom ?? this.pronom,
-      htmlSignature: htmlSignature ?? this.htmlSignature,
-      status: status ?? this.status,
-    );
+        name: name ?? this.name,
+        email: email ?? this.email,
+        location: location ?? this.location,
+        position: position ?? this.position,
+        pronom: pronom ?? this.pronom,
+        htmlSignature: htmlSignature ?? this.htmlSignature,
+        status: status ?? this.status,
+        htmlEditorController:
+            htmlEditorController ?? this.htmlEditorController);
   }
 
   @override
-  List<Object> get props => [name, email, location, position, status];
+  List<Object> get props =>
+      [name, email, location, position, status, htmlEditorController];
 }

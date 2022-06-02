@@ -23,7 +23,7 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
         _mailAddress = mailAddress,
         _location = location,
         _position = position,
-        super(const SignatureState()) {
+        super(SignatureState(htmlEditorController: HtmlEditorController())) {
     on<NameChanged>(_onNameChanged);
     on<EmailChanged>(_onEmailChanged);
     on<LocationChanged>(_onLocationChanged);
@@ -56,8 +56,6 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
     debugPrint(transition.toString());
     super.onTransition(transition);
   }
-
-  var htmlEditorController = HtmlEditorController();
 
   void launchURL(url) async =>
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
@@ -321,10 +319,10 @@ class SignatureBloc extends Bloc<SignatureEvent, SignatureState> {
   }
 
   void updateHtmlEditor(String html) {
-    htmlEditorController.disable();
-    htmlEditorController.clear();
-    htmlEditorController.insertHtml(html);
-    htmlEditorController.reloadWeb();
-    htmlEditorController.enable();
+    state.htmlEditorController.disable();
+    state.htmlEditorController.clear();
+    state.htmlEditorController.insertHtml(html);
+    state.htmlEditorController.reloadWeb();
+    state.htmlEditorController.enable();
   }
 }
