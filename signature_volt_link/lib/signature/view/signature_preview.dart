@@ -12,6 +12,7 @@ class SignaturePreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isScreenWide = MediaQuery.of(context).size.width >= 900;
+    var htmlEditorController = HtmlEditorController();
     var widthDesktopPreview = MediaQuery.of(context).size.width * 0.90;
     if (isScreenWide) {
       widthDesktopPreview = MediaQuery.of(context).size.width * 0.50;
@@ -128,9 +129,7 @@ class SignaturePreview extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: HtmlEditor(
-                          controller: context
-                              .read<SignatureBloc>()
-                              .htmlEditorController,
+                          controller: htmlEditorController,
                         ),
                         // child: HtmlEditor(
                         //   controller: context
