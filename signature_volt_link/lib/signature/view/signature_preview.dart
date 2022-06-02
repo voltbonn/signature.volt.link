@@ -115,7 +115,7 @@ class SignaturePreview extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: 200,
+                      height: 300,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: const BorderRadius.only(
@@ -130,7 +130,7 @@ class SignaturePreview extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: HtmlEditor(
                           controller: context
-                              .watch<SignatureBloc>()
+                              .read<SignatureBloc>()
                               .htmlEditorController,
                           htmlToolbarOptions: const HtmlToolbarOptions(
                               toolbarItemHeight: 0,
