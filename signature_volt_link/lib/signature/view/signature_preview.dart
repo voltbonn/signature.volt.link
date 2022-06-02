@@ -130,20 +130,15 @@ class SignaturePreview extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: HtmlEditor(
                           controller: htmlEditorController,
+                          htmlToolbarOptions: const HtmlToolbarOptions(
+                              toolbarItemHeight: 0,
+                              defaultToolbarButtons: [
+                                StyleButtons(style: false),
+                              ]),
+                          htmlEditorOptions: HtmlEditorOptions(
+                            initialText: state.htmlSignature,
+                          ),
                         ),
-                        // child: HtmlEditor(
-                        //   controller: context
-                        //       .read<SignatureBloc>()
-                        //       .htmlEditorController,
-                        //   htmlToolbarOptions: const HtmlToolbarOptions(
-                        //       toolbarItemHeight: 0,
-                        //       defaultToolbarButtons: [
-                        //         StyleButtons(style: false),
-                        //       ]),
-                        //   htmlEditorOptions: HtmlEditorOptions(
-                        //     initialText: state.htmlSignature,
-                        //   ),
-                        // ),
                       ),
                     ),
                   ],
